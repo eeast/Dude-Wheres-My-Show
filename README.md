@@ -1,4 +1,4 @@
-# #todo: Select Project Idea
+# Streaming Availability App
 
 ## Description
 
@@ -6,19 +6,19 @@
 
 ## User Story
 
-**AS A** 
+**AS AN** movie and television enthusiast,
 
-**I WANT** 
+**I WANT** a simple search application
 
-**SO THAT** 
+**SO THAT** I can find where to watch my shows.
 
 ## Acceptance Criteria
 
-**GIVEN** 
+**GIVEN**
 
-**WHEN** 
+**WHEN**
 
-**THEN** 
+**THEN**
 
 ## Demonstration
 
