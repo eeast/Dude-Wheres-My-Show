@@ -33,11 +33,13 @@ let processTitleSearch = function() {
 	    .then(response => response.json())
 	    .then(response => {
             localStorage.setItem(title,JSON.stringify(response.result))
+            console.log(JSON.stringify(response.result));
             loadTitleSearch(response.result)
         })
 	    .catch(err => console.error(err));
     } else {
         loadTitleSearch(results);
+        console.log(JSON.stringify(results));
     }
 }
     
