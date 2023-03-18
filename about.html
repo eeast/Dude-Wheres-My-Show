@@ -14,6 +14,7 @@
 
     <!-- mockup css styles -->
     <style>
+        /* group color palette */
         :root {
             --red:var(#EF476F);
             --yellow:var(#FFD166);
@@ -34,13 +35,41 @@
         h1 {
             color:#FFD166;
         }
+
+        .carousel {
+            height: 650px;
+            perspective: 300px;
+        }
+
+        .carousel .carousel-item {
+            width: 550px;
+            background: #FFD166;
+            padding: 20px;
+            height: auto;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .carousel-img {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .carousel-text {
+            color: #073B4C;
+            font-size: 1rem;
+        }
+        
     </style>
     
     <!-- nav with link to go home -->
     <nav class="about-nav">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">DUDE</a>
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <ul id="nav-mobile" class="left">
                 <li>
                     <a href="./index.html"><i class="material-icons left">home</i>Home</a>
                 </li>
@@ -53,18 +82,78 @@
         <!-- short description of group project -->
         <div class="container" class="about-description">
             <h1>About Us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis praesentium aspernatur inventore ea, accusantium quidem eligendi sint aliquid adipisci accusamus nam et perspiciatis ut laborum laboriosam officiis, recusandae sunt id.</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
         </div>
 
         <!-- team member carousel -->
         <div class="carousel">
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty1.jpg"></a>
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty2.jpg"></a>
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty3.jpg"></a>
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty4.jpg"></a>
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty5.jpg"></a>
-            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty6.jpg"></a>
-            </div>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty1.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty2.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty3.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty4.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty5.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty6.jpg">
+                    </div>
+                    <h4>Name</h4>
+                    <h5>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
         </div>
 
     </section>
