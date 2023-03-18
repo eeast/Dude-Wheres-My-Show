@@ -25,13 +25,13 @@
         </div>
 
         <!-- team member carousel -->
-        <div>
-            <div class="carousel">
-                    <a class="carousel-item" href="#"><img src="./images-placeholders/kitty1.jpg"></a>
-                    <a class="carousel-item" href="#"><img src="./images-placeholders/kitty2.jpg"></a>
-                    <a class="carousel-item" href="#"><img src="./images-placeholders/kitty3.jpg"></a>
-                    <a class="carousel-item" href="#"><img src="./images-placeholders/kitty4.jpg"></a>
-                    <a class="carousel-item" href="#"><img src="./images-placeholders/kitty5.jpg"></a>
+        <div class="carousel">
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty1.jpg"></a>
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty2.jpg"></a>
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty3.jpg"></a>
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty4.jpg"></a>
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty5.jpg"></a>
+            <a class="carousel-item" href="#"><img src="./images-placeholders/kitty6.jpg"></a>
             </div>
         </div>
 
@@ -47,7 +47,14 @@
     <!-- carousel script (also jQuery option)-->
     <script>
     $(document).ready(function(){
-        $('.carousel').carousel();
+        $('.carousel').carousel({
+            padding:200
+        });
+        autoplay();
+        function autoplay() {
+            $('.carousel').carousel('next');
+            setTimeout(autoplay, 5000);
+        }    
     });
     </script>
 
