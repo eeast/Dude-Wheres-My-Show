@@ -13,7 +13,14 @@
     <title>About Us</title>
 </head>
 <body>
-
+    <!-- NOTES: 
+        -js and style tags included to minimize conflict, can be moved to respective sheets after merge
+        -need to consider responsiveness, do we want to maintain carousel on mobile or use cards?
+        -do we want to use icons? if so, should we stick with one icon library?
+        -need image folder, each team member can insert own image for carousel
+        -what information about our project/process do we want to highlight in the description?
+        -how do we want navbar to look/function? -->
+        
     <!-- mockup css styles -->
     <style>
         /* group color palette */
@@ -89,7 +96,6 @@
 
         <!-- team member carousel -->
         <div class="carousel">
-
             <a class="carousel-item" href="#">
                 <div class="carousel-text">
                     <div class="carousel-img">
@@ -155,7 +161,6 @@
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
                 </div>
             </a>
-
         </div>
 
     </section>
@@ -167,7 +172,7 @@
     <!--materialize javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <!-- carousel script (also jQuery option)-->
+    <!--carousel script-->
     <script>
     $(document).ready(function(){
         $('.carousel').carousel({
