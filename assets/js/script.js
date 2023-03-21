@@ -29,7 +29,7 @@ const options = {
 
 
 // Title Search
-let title = "cool runnings";
+let title = "Game of Thrones";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -43,13 +43,11 @@ let processTitleSearch = function() {
 	    .then(response => response.json())
 	    .then(response => {
             localStorage.setItem(title,JSON.stringify(response.result))
-            console.log(JSON.stringify(response.result));
             loadTitleSearch(response.result)
         })
 	    .catch(err => console.error(err));
     } else {
         loadTitleSearch(results);
-        console.log(JSON.stringify(results));
     }
 }
     
@@ -57,35 +55,93 @@ let processTitleSearch = function() {
 
 let loadTitleSearch = function(res) {
     console.log(res);
-    console.log(res[0]);
-    console.log(res[0].streamingInfo.us);
-    const strServices = res[0].streamingInfo.us;
-    for (const property in strServices) {
-        let output = `${property}: `;
-        let typeSet = new Set();
-        for (let i = 0; i < strServices[property].length; i++) {
-            typeSet.add(strServices[property][i].type)
-        }
-        let typeArray = Array.from(typeSet);
-        for (let i = 0; i < typeArray.length; i++) {
-            output += typeArray[i];
-            if (i < typeArray.length - 1) {
-                output += ", ";
+
+    for (let i = 0; i < 5; i++) {
+        if (res[i].type === "movie") {
+            // Title
+            console.log(res[i].title);
+
+            // Year
+            console.log(`Year: ${res[i].year}`);
+            
+
+            // Runtime
+            console.log(`${res[i].runtime} minutes`);
+
+            // Parsing the streaming services into a conscise (no duplicates) printable list
+            const strServices = res[i].streamingInfo.us;
+            if (strServices === undefined) {
+                console.log("No Streaming Services Available...");
+            } else {
+                for (const property in strServices) {
+                    let output = `${property}: `;
+                    let typeSet = new Set();
+                    for (let i = 0; i < strServices[property].length; i++) {
+                        typeSet.add(strServices[property][i].type)
+                    }
+                    let typeArray = Array.from(typeSet);
+                    for (let i = 0; i < typeArray.length; i++) {
+                        output += typeArray[i];
+                        if (i < typeArray.length - 1) {
+                            output += ", ";
+                        }
+                    }
+                    console.log(output);
+                }
             }
+
+            // Trailer Link
+            console.log(res[i].youtubeTrailerVideoLink);
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
+        } else if (res[i].type === "series") {
+            // Title
+            console.log(res[i].title);
+
+            // Year
+            if (res[i].firstAirYear === res[i].lastAirYear) {
+                console.log(`On Air: ${res[i].firstAirYear}`);
+            } else {
+                console.log(`On Air: ${res[i].firstAirYear}-${res[i].lastAirYear}`);
+            }
+
+            // Number of Seasons
+            console.log(`${res[i].seasonCount} seasons`);
+
+            // Parsing the streaming services into a conscise (no duplicates) printable list
+            for (let season of res[i].seasons) {
+                console.log(`${season.title}`);
+                const strServices = season.streamingInfo.us;
+                if (strServices === undefined) {
+                    console.log("No Streaming Services Available...");
+                } else {
+                    for (const serviceProvider in strServices) {
+                        let output = `${serviceProvider}: `;
+                        let typeSet = new Set();
+                        for (let i = 0; i < strServices[serviceProvider].length; i++) {
+                            typeSet.add(strServices[serviceProvider][i].type)
+                        }
+                        let typeArray = Array.from(typeSet);
+                        for (let i = 0; i < typeArray.length; i++) {
+                            output += typeArray[i];
+                            if (i < typeArray.length - 1) {
+                                output += ", ";
+                            }
+                        }
+                        console.log(output);
+                    }
+                }
+            }
+
+            // Trailer Link
+            console.log(res[i].youtubeTrailerVideoLink);
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
         }
-        console.log(output);
+        
     }
 }
 
 processTitleSearch()
-
-// Basic Search
-// let showType = "";
-// let searchKey = "the big lebowski";
-
-// let requestURL = `https://streaming-availability.p.rapidapi.com/v2/search/basic?country=us&services=netflix%2Cprime%2Chulu%2Capple&output_language=en&show_type=${showType}&keyword=${searchKey}`
-
-// fetch(requestURL, options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
