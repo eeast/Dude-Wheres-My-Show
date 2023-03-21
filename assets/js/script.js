@@ -110,11 +110,11 @@ let loadTitleSearch = function(res) {
                 if (strServices === undefined) {
                     console.log("No Streaming Services Available...");
                 } else {
-                    for (const property in strServices) {
-                        let output = `${property}: `;
+                    for (const serviceProvider in strServices) {
+                        let output = `${serviceProvider}: `;
                         let typeSet = new Set();
-                        for (let i = 0; i < strServices[property].length; i++) {
-                            typeSet.add(strServices[property][i].type)
+                        for (let i = 0; i < strServices[serviceProvider].length; i++) {
+                            typeSet.add(strServices[serviceProvider][i].type)
                         }
                         let typeArray = Array.from(typeSet);
                         for (let i = 0; i < typeArray.length; i++) {
