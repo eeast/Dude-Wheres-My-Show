@@ -22,7 +22,7 @@ $(document).ready(function () {
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '3a98a28e7dmsh1d83ce3a7680f1bp16bc55jsn1d6758dbbe6f',
+		'X-RapidAPI-Key': _APIKEY_,
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
