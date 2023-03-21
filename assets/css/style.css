@@ -1,11 +1,39 @@
+:root {
+    --red: var(#EF476F);
+    --yellow: var(#FFD166);
+    --green: var(#06D6A0);
+    --blue: var(#118AB2);
+    --navy: var(#073B4C);
+}
+
 * {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
-    background-color: #023047;
-    color: #8ECAE6;
+    background-color: #073B4C;
+    color: #FFD166;
 }
 
+input {
+    color: #118AB2;
+}
+
+.main-nav {
+    background-color: #118AB2;
+}
+
+p {
+    color: white;
+}
+
+aside,
+input {
+    color: white;
+}
+
+.p {
+    color: #118AB2;
+}
 
 

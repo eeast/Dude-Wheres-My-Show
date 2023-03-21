@@ -12,7 +12,12 @@
 
 // Search history list
 
-//another comment
+// Another comment
+
+// For modal
+$(document).ready(function () {
+  $(".modal").modal();
+});
 
 const options = {
 	method: 'GET',
@@ -28,6 +33,7 @@ let title = "Game of Thrones";
 let country = "us";
 let type = "";
 let output_language = "en";
+
 
 
 let processTitleSearch = function() {
