@@ -4,24 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Materialize CSS link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Dude, Where's My Show?</title>
 </head>
 <body>
-    <header>
+    <nav class="main-nav">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">DUDE</a>
+                <ul id="nav-mobile" class="left">
+                    <li>
+                        <a href="about.html"><i class="material-icons left"></i>About Us</a>
+                    </li>
+                </ul>
+    </nav>
         <!-- Title - top left corner -->
-        <h1>Dude, Where's My Show?</h1>
         <!-- Search button + modal(below) - centered on bar, large button -->
-        <button>Search</button>
+        <input type="text" placeholder="Enter search here" class="text-white"></input>
+        <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Search</button>
+        <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
+         
+        <!-- Modal Trigger -->
+        <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" href="#modal1">Advanced Search</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+            <h4>Advanced Search</h4>
+            <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio a ipsa dicta laudantium ab, veritatis cupiditate ipsum labore magni vel unde illo, dolorem, nulla repellendus iure obcaecati ducimus? Repudiandae, quidem!</p>
+            </div>
+            <div class="modal-footer">
+            <a href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>
+        
         <!-- Other links (tbd) - top right corner -->
-        <nav>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
-        </nav>
-    </header>
+           
     
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
@@ -70,6 +89,14 @@
 
     <!-- About us/contact info -->
     <footer></footer>
+
+    <!-- Materialize script tag -->
+
+    <!-- Do I need a jQuery tag? -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
