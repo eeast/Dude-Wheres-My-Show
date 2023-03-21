@@ -43,7 +43,36 @@
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
         <div>
-            <section> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis temporibus corrupti iure quod facere nihil distinctio ea ab, neque similique tempora, dolores repudiandae delectus voluptates et quaerat a esse! Quisquam.
+            <section class="col s9">
+                <div class="welcome-container">
+
+                    <!-- welcome and short description -->
+                    <div>
+                        <h1>Welcome</h1>
+                        <p>Search your favorite TV show or movie and find current available streaming options.</p>
+                    </div>
+
+                    <!-- divider -->
+                    <div class="divider"></div>
+
+                    <!-- movie information container-->
+                    <div>
+                        <!-- movie poster -->
+                        <div class="col s3" id="movie-poster">
+                            <img src="./movie-poster-placeholder.jpg" alt="movie poster" width="25%" height="25%"> 
+                        </div>
+
+                        <!-- movie info (title, year, runtime, services) -->
+                        <div class="col s9" id="movie-info">
+                            <h2 id="movie-title"></h2>
+                            <p id="year"></p>
+                            <p id="runtime"></p>
+                            <p id="services"></p>
+                        </div>
+                    </div>
+                    
+        
+                </div> 
             </section>
 
             <!-- modal popup -->
