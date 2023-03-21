@@ -22,7 +22,7 @@ $(document).ready(function () {
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '3a98a28e7dmsh1d83ce3a7680f1bp16bc55jsn1d6758dbbe6f',
+		'X-RapidAPI-Key': _APIKEY_,
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
@@ -116,11 +116,11 @@ let loadTitleSearch = function(res) {
                 if (strServices === undefined) {
                     console.log("No Streaming Services Available...");
                 } else {
-                    for (const serviceProvider in strServices) {
-                        let output = `${serviceProvider}: `;
+                    for (const property in strServices) {
+                        let output = `${property}: `;
                         let typeSet = new Set();
-                        for (let i = 0; i < strServices[serviceProvider].length; i++) {
-                            typeSet.add(strServices[serviceProvider][i].type)
+                        for (let i = 0; i < strServices[property].length; i++) {
+                            typeSet.add(strServices[property][i].type)
                         }
                         let typeArray = Array.from(typeSet);
                         for (let i = 0; i < typeArray.length; i++) {

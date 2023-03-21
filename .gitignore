@@ -1,2 +1,5 @@
 # Ignore Mac system files
 .DS_store
+
+# API Key file
+config.js

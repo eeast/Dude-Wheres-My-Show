@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--google icon font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- font awesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!--materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./materialize/css/materialize.css"  media="screen,projection"/>
+    <title>About Us</title>
+</head>
+<body>
+    <!-- NOTES: 
+        -js and style tags included to minimize conflict, can be moved to respective sheets after merge
+        -need to consider responsiveness, do we want to maintain carousel on mobile or use cards?
+        -do we want to use icons? if so, should we stick with one icon library?
+        -need image folder, each team member can insert own image for carousel
+        -what information about our project/process do we want to highlight in the description?
+        -how do we want navbar to look/function? -->
+        
+    <!-- mockup css styles -->
+    <style>
+        /* group color palette */
+        :root {
+            --red: #EF476F;
+            --yellow:#FFD166;
+            --green:#06D6A0;
+            --blue:#118AB2;
+            --navy:#073B4C;
+        }
+
+        body {
+            background-color: var(--red);
+            color: white;
+        }
+
+        .about-nav {
+            background-color: var(--blue);
+        }
+
+        h1 {
+            color: var(--yellow);
+        }
+
+        .carousel {
+            height: 650px;
+            perspective: 300px;
+        }
+
+        .carousel .carousel-item {
+            width: 550px;
+            background: var(--yellow);
+            padding: 20px;
+            height: auto;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .carousel-img {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .carousel-text {
+            color: var(--navy);
+            font-size: 1rem;
+        }
+        
+    </style>
+    
+    <!-- nav with link to go home -->
+    <nav class="about-nav">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">DUDE</a>
+            <ul id="nav-mobile" class="left">
+                <li>
+                    <a href="./index.html"><i class="material-icons left">home</i>Home</a>
+                </li>
+            </ul>
+    </nav>
+
+    <!-- about us section -->
+    <section>
+
+        <!-- short description of group project -->
+        <div class="container" class="about-description">
+            <h1 id="movie-title">Dude, Where's My Car?</h1>
+            <p id="movie-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+        </div>
+
+        <!-- team member carousel -->
+        <div class="carousel">
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty1.jpg">
+                    </div>
+                    <h4>Brian Hamlin</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty2.jpg">
+                    </div>
+                    <h4>Chris McNamara</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty3.jpg">
+                    </div>
+                    <h4>Elizabeth Olsavsky</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty4.jpg">
+                    </div>
+                    <h4>Eric Easthope</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty5.jpg">
+                    </div>
+                    <h4>Hunter Hester</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+
+            <a class="carousel-item" href="#">
+                <div class="carousel-text">
+                    <div class="carousel-img">
+                        <img src="./images-placeholders/kitty6.jpg">
+                    </div>
+                    <h4>Ryan Messett</h4>
+                    <h5><i class="fa-brands fa-github"></i>GitHub</h5>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam ea, illo magnam asperiores pariatur laborum fugit temporibus accusantium molestias maxime dolore quod est deleniti eveniet numquam adipisci sunt! Accusamus, laboriosam!</p>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+    <!--jQuery -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <!--materialize javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--carousel script-->
+    <script>
+    $(document).ready(function(){
+        $('.carousel').carousel({
+            padding:200
+        });
+        autoplay();
+        function autoplay() {
+            $('.carousel').carousel('next');
+            setTimeout(autoplay, 5000);
+        }    
+    });
+    </script>
+
+</body>
+</html>
