@@ -1,4 +1,10 @@
 // id => idEl
+const posterEl = $('#movie-poster');
+const titleEl = $('#movie-title');
+const yearEl = $('#year');
+const runtimeEl = $('#runtime');
+const servicesEl = $('#services');
+const trailerEl = $('#trailer');
 // start-btn => startBtn
 
 // Search button
@@ -17,15 +23,15 @@ $(document).ready(function () {
 });
 
 const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "3a98a28e7dmsh1d83ce3a7680f1bp16bc55jsn1d6758dbbe6f",
-    "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
-  },
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': _APIKEY_,
+		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
+	}
 };
 
 // Title Search
-let title = "Game of Thrones";
+let title = "Dude where's my car";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -64,28 +70,94 @@ let loadTitleSearch = function (res) {
       // Year
       console.log(`Year: ${res[i].year}`);
 
-      // Runtime
-      console.log(`${res[i].runtime} minutes`);
+    for (let i = 0; i < 1; i++) {
+        if (res[i].type === "movie") {
+            // Title
+            console.log(res[i].title);
+            titleEl.append(res[i].title);
 
-      // Parsing the streaming services into a conscise (no duplicates) printable list
-      const strServices = res[i].streamingInfo.us;
-      if (strServices === undefined) {
-        console.log("No Streaming Services Available...");
-      } else {
-        for (const property in strServices) {
-          let output = `${property}: `;
-          let typeSet = new Set();
-          for (let i = 0; i < strServices[property].length; i++) {
-            typeSet.add(strServices[property][i].type);
-          }
-          let typeArray = Array.from(typeSet);
-          for (let i = 0; i < typeArray.length; i++) {
-            output += typeArray[i];
-            if (i < typeArray.length - 1) {
-              output += ", ";
+            // Year
+            console.log(`Year: ${res[i].year}`);
+            yearEl.append(res[i].year);
+            
+
+            // Runtime
+            console.log(`${res[i].runtime} minutes`);
+            runtimeEl.append(`Runtime: ${res[i].runtime} min`);
+
+            // Parsing the streaming services into a conscise (no duplicates) printable list
+            const strServices = res[i].streamingInfo.us;
+            if (strServices === undefined) {
+                console.log("No Streaming Services Available...");
+            } else {
+                for (const property in strServices) {
+                    let output = `${property}: `;
+                    let typeSet = new Set();
+                    for (let i = 0; i < strServices[property].length; i++) {
+                        typeSet.add(strServices[property][i].type)
+                    }
+                    let typeArray = Array.from(typeSet);
+                    for (let i = 0; i < typeArray.length; i++) {
+                        output += typeArray[i];
+                        if (i < typeArray.length - 1) {
+                            output += ", ";
+                        }
+                    }
+                    console.log(output);
+                }
             }
-          }
-          console.log(output);
+
+            // Trailer Link
+            console.log(res[i].youtubeTrailerVideoLink);
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
+            posterEl.prepend(`<img src="${res[i].posterURLs[342]}" />`);
+            trailerEl.prepend(``)
+        } else if (res[i].type === "series") {
+            // Title
+            console.log(res[i].title);
+
+            // Year
+            if (res[i].firstAirYear === res[i].lastAirYear) {
+                console.log(`On Air: ${res[i].firstAirYear}`);
+            } else {
+                console.log(`On Air: ${res[i].firstAirYear}-${res[i].lastAirYear}`);
+            }
+
+            // Number of Seasons
+            console.log(`${res[i].seasonCount} seasons`);
+
+            // Parsing the streaming services into a conscise (no duplicates) printable list
+            for (let season of res[i].seasons) {
+                console.log(`${season.title}`);
+                const strServices = season.streamingInfo.us;
+                if (strServices === undefined) {
+                    console.log("No Streaming Services Available...");
+                } else {
+                    for (const property in strServices) {
+                        let output = `${property}: `;
+                        let typeSet = new Set();
+                        for (let i = 0; i < strServices[property].length; i++) {
+                            typeSet.add(strServices[property][i].type)
+                        }
+                        let typeArray = Array.from(typeSet);
+                        for (let i = 0; i < typeArray.length; i++) {
+                            output += typeArray[i];
+                            if (i < typeArray.length - 1) {
+                                output += ", ";
+                            }
+                        }
+                        console.log(output);
+                    }
+                }
+            }
+
+            // Trailer Link
+            console.log(res[i].youtubeTrailerVideoLink);
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
         }
       }
 

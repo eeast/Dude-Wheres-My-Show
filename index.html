@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,34 +10,35 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Dude, Where's My Show?</title>
 </head>
+
 <body>
     <nav class="main-nav">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">DUDE</a>
-                <ul id="nav-mobile" class="left">
-                    <li>
-                        <a href="about.html"><i class="material-icons left"></i>About Us</a>
-                    </li>
-                </ul>
+            <ul id="nav-mobile" class="left">
+                <li>
+                    <a href="about.html"><i class="material-icons left"></i>About Us</a>
+                </li>
+            </ul>
     </nav>
-        <!-- Title - top left corner -->
-        <!-- Search button + modal(below) - centered on bar, large button -->
-        <input type="text" placeholder="Enter search here" class="text-white"></input>
-        <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Search</button>
-        <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
-         
-        <!-- Modal Trigger -->
-        <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" href="#modal1">Advanced Search</a>
+    <!-- Title - top left corner -->
+    <!-- Search button + modal(below) - centered on bar, large button -->
+    <input type="text" placeholder="Enter search here" class="text-white"></input>
+    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit"
+        value="submit">Search</button>
+    <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
 
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
+    <!-- Modal Trigger -->
+    <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable"
+        href="#modal1">Advanced Search</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
             <h4>Advanced Search</h4>
-            <p class="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio a ipsa dicta laudantium ab, veritatis cupiditate ipsum labore magni vel unde illo, dolorem, nulla repellendus iure obcaecati ducimus? Repudiandae, quidem!</p>
-            </div>
-            <div class="modal-footer">
-            <a href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio a ipsa dicta laudantium ab,
+                veritatis cupiditate ipsum labore magni vel unde illo, dolorem, nulla repellendus iure obcaecati
+                ducimus? Repudiandae, quidem!</p>
         </div>
 
 <!-- Youtube embed -->
@@ -71,51 +73,52 @@
     
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
-        <div>
-            <section class="col s9">
-                <div class="welcome-container">
 
-                    <!-- welcome and short description -->
-                    <div>
-                        <h1>Welcome</h1>
-                        <p>Search your favorite TV show or movie and find current available streaming options.</p>
-                    </div>
+        <div class="row">
 
-                    <!-- divider -->
-                    <div class="divider"></div>
+            <div class="col s8">
 
-                    <!-- movie information container-->
-                    <div>
-                        <!-- movie poster -->
-                        <div class="col s3" id="movie-poster">
-                            <img src="./movie-poster-placeholder.jpg" alt="movie poster" width="25%" height="25%"> 
-                        </div>
+                <section class="row">
+                            <!-- movie poster -->
+                            <div class="col s4" id="movie-poster">
+                                <img src="./movie-poster-placeholder.jpg" alt="movie poster" width="100%" height="100%">
+                            </div>
 
-                        <!-- movie info (title, year, runtime, services) -->
-                        <div class="col s9" id="movie-info">
-                            <h2 id="movie-title"></h2>
-                            <p id="year"></p>
-                            <p id="runtime"></p>
-                            <p id="services"></p>
-                        </div>
-                    </div>
-                    
-        
-                </div> 
-            </section>
 
-            <!-- modal popup -->
-            <div></div>
+                            <!-- movie info (title, year, runtime, services) -->
+                            <div class="col s8" id="movie-info">
+                                <h3 id="movie-title"> Movie Title </h3>
+                                <p id="year"> Year </p>
+                                <p id="runtime"> Runtime </p>
+                                <p id="services"> Services </p>
+                            </div>
+                            <!-- add trailer -->
+                </section>
 
-            <!-- Favorites and Search History - stretch 20% -->
-            <aside>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, eum repellat qui, perferendis temporibus deleniti nihil iste magni necessitatibus, consequatur vero? Repellat illo quidem alias accusamus voluptatibus obcaecati a impedit?</aside>
+            </div>
+
+            <div id="aside" class="col s4">
+
+                    <!-- Favorites and Search History - stretch 20% -->
+                <aside>
+                    <p>ASIDE (favorites and recent searches)</p>
+                </aside>
+            </div>
         </div>
-    </main> 
 
-    
+    </main>
 
     <!-- About us/contact info -->
     <footer></footer>
+
+    </div>
+
+
+
+
+
+
+
 
     <!-- Materialize script tag -->
 
@@ -124,6 +127,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./assets/js/config.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
