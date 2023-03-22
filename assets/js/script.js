@@ -1,4 +1,10 @@
 // id => idEl
+const posterEl = $('#movie-poster');
+const titleEl = $('#movie-title');
+const yearEl = $('#year');
+const runtimeEl = $('#runtime');
+const servicesEl = $('#services');
+const trailerEl = $('#trailer');
 // start-btn => startBtn
 
 
@@ -29,7 +35,7 @@ const options = {
 
 
 // Title Search
-let title = "Game of Thrones";
+let title = "Dude where's my car";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -56,17 +62,20 @@ let processTitleSearch = function() {
 let loadTitleSearch = function(res) {
     console.log(res);
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1; i++) {
         if (res[i].type === "movie") {
             // Title
             console.log(res[i].title);
+            titleEl.append(res[i].title);
 
             // Year
             console.log(`Year: ${res[i].year}`);
+            yearEl.append(res[i].year);
             
 
             // Runtime
             console.log(`${res[i].runtime} minutes`);
+            runtimeEl.append(`Runtime: ${res[i].runtime} min`);
 
             // Parsing the streaming services into a conscise (no duplicates) printable list
             const strServices = res[i].streamingInfo.us;
@@ -95,6 +104,8 @@ let loadTitleSearch = function(res) {
 
             // Poster
             console.log(res[i].posterURLs[342]);
+            posterEl.prepend(`<img src="${res[i].posterURLs[342]}" />`);
+            trailerEl.prepend(``)
         } else if (res[i].type === "series") {
             // Title
             console.log(res[i].title);
