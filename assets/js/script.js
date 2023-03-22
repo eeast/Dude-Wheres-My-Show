@@ -104,8 +104,8 @@ let loadTitleSearch = function(res) {
 
             // Poster
             console.log(res[i].posterURLs[342]);
-            posterEl.prepend(`<img src="${res[i].posterURLs[342]}" />`);
-            trailerEl.prepend(``)
+            posterEl.prepend(`<img id="movie-poster" src="${res[i].posterURLs[342]}" />`);
+            
         } else if (res[i].type === "series") {
             // Title
             console.log(res[i].title);
