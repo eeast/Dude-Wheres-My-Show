@@ -34,14 +34,14 @@ const options = {
 
 
 // Title Search
-let title = "jaws";
+let title = "alien";
 let country = "us";
 let type = "";
 let output_language = "en";
 let searchInput = []
 
-$('#searchBtn').on('click', function() {
-    var selectEl = $('#selector')
+$('#main-search-button').on('click', function() {
+    var selectEl = $('#main-search-input')
     if(selectEl.val().length > 0){
         searchInput.push(selectEl.val())
         localStorage.setItem("movie-title", JSON.stringify(searchInput))
@@ -103,22 +103,22 @@ let processTitleSearch = function() {
 
 
 // creates local storage for search history and logs titles in console from searchHistoryArr
-const searchHistory = function() { 
-let searchHistory = localStorage.getItem('searchHistory');
-let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
+// const searchHistory = function() { 
+// let searchHistory = localStorage.getItem('searchHistory');
+// let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
 
-const index = searchHistoryArr.indexOf(title);
-if (index !== -1) {
-  searchHistoryArr.splice(index, 1);
-}
-searchHistoryArr.unshift(title);
+// const index = searchHistoryArr.indexOf(title);
+// if (index !== -1) {
+//   searchHistoryArr.splice(index, 1);
+// }
+// searchHistoryArr.unshift(title);
 
-localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
+// localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
 
-for(let i = 0;i < searchHistoryArr.length ;i++){
-    console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
-   };
-}
+// for(let i = 0;i < searchHistoryArr.length ;i++){
+//     console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
+//    };
+// }
 
 let loadTitleSearch = function(res) {
     console.log(res);
@@ -139,26 +139,26 @@ let loadTitleSearch = function(res) {
             runtimeEl.append(`Runtime: ${res[i].runtime} min`);
 
             // Parsing the streaming services into a conscise (no duplicates) printable list
-            // const strServices = res[i].streamingInfo.us;
-            // if (strServices === undefined) {
-            //     console.log("No Streaming Services Available...");
-            // } else {
-            //     for (const property in strServices) {
-            //         let output = `${property}: `;
-            //         let typeSet = new Set();
-            //         for (let i = 0; i < strServices[property].length; i++) {
-            //             typeSet.add(strServices[property][i].type)
-            //         }
-            //         let typeArray = Array.from(typeSet);
-            //         for (let i = 0; i < typeArray.length; i++) {
-            //             output += typeArray[i];
-            //             if (i < typeArray.length - 1) {
-            //                 output += ", ";
-            //             }
-            //         }
-            //         console.log(output);
-            //     }
-            // }
+            const strServices = res[i].streamingInfo.us;
+            if (strServices === undefined) {
+                console.log("No Streaming Services Available...");
+            } else {
+                for (const property in strServices) {
+                    let output = `${property}: `;
+                    let typeSet = new Set();
+                    for (let i = 0; i < strServices[property].length; i++) {
+                        typeSet.add(strServices[property][i].type)
+                    }
+                    let typeArray = Array.from(typeSet);
+                    for (let i = 0; i < typeArray.length; i++) {
+                        output += typeArray[i];
+                        if (i < typeArray.length - 1) {
+                            output += ", ";
+                        }
+                    }
+                    console.log(output);
+                }
+            }
 
             // Trailer Link
             console.log(res[i].youtubeTrailerVideoLink);
