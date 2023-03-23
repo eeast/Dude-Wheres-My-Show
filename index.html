@@ -24,8 +24,8 @@
    <div class="searchregion">
     <!-- Title - top left corner -->
     <!-- Search button + modal(below) - centered on bar, large button -->
-    <input type="text" placeholder="Enter search here" class="text-white"></input>
-    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit"
+    <input id="main-search-input" type="text" placeholder="Enter search here" class="text-white"></input>
+    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" id="main-search-button" type="submit"
         value="submit">Search</button>
     <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
 
@@ -37,12 +37,43 @@
     <div id="modal1" class="modal">
         <div class="modal-content">
             <h4>Advanced Search</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio a ipsa dicta laudantium ab,
-                veritatis cupiditate ipsum labore magni vel unde illo, dolorem, nulla repellendus iure obcaecati
-                ducimus? Repudiandae, quidem!</p>
+            <input class="modal-input-text" id="modal-input-text" type="text" placeholder="Enter search here"></input>
+
+            <div class="input-field col s12">
+                <select>
+                    <option id="country-dropdown" value="" disabled selected>Choose country</option>
+                    <option value="1">USA</option>
+                    <option value="2">Canada</option>
+                    <option value="3">Mexico</option>
+                </select>
+                <label id="advanced-label-1">Country</label>
+            </div>
+
+              <div class="input-field col s12">
+                <select>
+                    <option id="type-dropdown"value="" disabled selected>Choose type</option>
+                    <option value="1">Movie</option>
+                    <option value="2">Series</option>
+                    <option value="3">All</option>
+                </select>
+                <label id="advanced-label-2">Type</label>
+            </div>
+
+              <div class="input-field col s12">
+                <select>
+                    <option id="language-dropdown" value="" disabled selected>Choose language</option>
+                    <option value="1">English</option>
+                    <option value="2">Spanish</option>
+                    <option value="3">French</option>
+                </select>
+                <label id="advanced-label-3">Language</label>
+            </div>
+
+
         </div>
         <div class="modal-footer">
-            <a href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            <a id="modal1-search-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Search</a>
         </div>
     </div>
     </div>

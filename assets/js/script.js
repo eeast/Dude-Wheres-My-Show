@@ -33,16 +33,8 @@ const options = {
 	}
 };
 
-
-// Title Search
-let title = "Dude where's my car";
-let country = "us";
-let type = "";
-let output_language = "en";
-
-
-
-let processTitleSearch = function() {
+let processTitleSearch = function(title, country, type, output_language) {
+    console.log(title, country, type, output_language);
     results = JSON.parse(localStorage.getItem(title));
     if (results === null) {
         fetch(`https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&type=${type}&output_language=${output_language}`, options)
@@ -56,7 +48,29 @@ let processTitleSearch = function() {
         loadTitleSearch(results);
     }
 }
-    
+
+// Main search button
+$("#main-search-button").click(function () {
+    var title = $("#main-search-input").val();
+    processTitleSearch(title);
+})
+
+// Advanced search button
+$("#modal1-search-button").click(function () {
+    var advancedTitle = $("#modal-input-text").val();
+    var advancedCountry = $("#country-dropdown").val();
+    var advancedType = $("#type-dropdown").val();
+    var advancedLanguage = $("#language-dropdown").val();
+    processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
+});
+
+
+
+$(document).ready(function () {
+  $("select").formSelect();
+});
+
+// **************************************
 
 
 let loadTitleSearch = function(res) {

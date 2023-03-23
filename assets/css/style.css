@@ -37,10 +37,20 @@ input {
 }
 
 
-#movie-poster{
+#movie-poster {
 max-width: 50%;
 }
 
-.searchregion{
+.searchregion {
     
+}
+
+.modal-input-text {
+    color: #118AB2;
+}
+
+#advanced-label-1, 
+#advanced-label-2, 
+#advanced-label-3 {
+    color: #118AB2;
 }
