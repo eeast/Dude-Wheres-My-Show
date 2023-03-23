@@ -1,32 +1,32 @@
 :root {
-    --red:var(#EF476F);
-    --yellow:var(#FFD166);
-    --green:var(#06D6A0);
-    --blue:var(#118AB2);
-    --navy:var(#073B4C);
+    --red: #EF476F;
+    --yellow: #FFD166;
+    --green: #06D6A0;
+    --blue: #118AB2;
+    --navy: #073B4C;
 }
 
 body {
-    background-color: #073B4C;
+    background-color: var(--navy);
     color: white;
 }
 
 .about-nav {
-    background-color:#118AB2;
+    background-color:var(--blue);
 }
 
 h1 {
-    color:#FFD166;
+    color: var(--yellow);
 }
 
 .carousel {
-    height: 550px;
-    perspective: 300px;
+    height: 600px;
+    perspective: 200px;
 }
 
 .carousel .carousel-item {
-    width: 550px;
-    background: #FFD166;
+    width: 375px;
+    background: var(--yellow);
     padding: 20px;
     height: auto;
     text-align: center;
@@ -42,21 +42,16 @@ img {
     width: 50%;
     height: auto;
     border-radius: 50%;
-    border: 3px #073B4C solid;
+    border: 3px var(--navy) solid;
 }
 
 .carousel-text {
-    color: #073B4C;
+    color: var(--navy);
     font-size: 1rem;
 }
 
-@media screen and (max-width: 500px) {
-    .carousel {
-        height: 450px;
-        perspective: 90px;
-    }
-
+@media (max-width: 500px) {
     .carousel .carousel-item {
-        width: 65%;
+        width: 300px;
     }
 }
