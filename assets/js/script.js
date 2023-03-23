@@ -36,7 +36,7 @@ const options = {
 let processTitleSearch = function(title, country, type, output_language) {
     console.log(title, country, type, output_language);
     results = JSON.parse(localStorage.getItem(title));
-    if (results === null) {
+    if (results === null || results === undefined) {
         fetch(`https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&type=${type}&output_language=${output_language}`, options)
 	    .then(response => response.json())
 	    .then(response => {
@@ -52,16 +52,18 @@ let processTitleSearch = function(title, country, type, output_language) {
 // Main search button
 $("#main-search-button").click(function () {
     var title = $("#main-search-input").val();
+    console.log(title);
     processTitleSearch(title);
+    console.log(processTitleSearch(title));
 })
 
 // Advanced search button
 $("#modal1-search-button").click(function () {
     var advancedTitle = $("#modal-input-text").val();
-    // var advancedCountry = $("#country-dropdown").val();
-    // var advancedType = $("#type-dropdown").val();
-    // var advancedLanguage = $("#language-dropdown").val();
-    processTitleSearch(advancedTitle);
+    var advancedCountry = $("#country-dropdown").val();
+    var advancedType = $("#type-dropdown").val();
+    var advancedLanguage = $("#language-dropdown").val();
+    processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
 });
 
 
