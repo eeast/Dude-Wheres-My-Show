@@ -1,0 +1,57 @@
+:root {
+    --red: #EF476F;
+    --yellow: #FFD166;
+    --green: #06D6A0;
+    --blue: #118AB2;
+    --navy: #073B4C;
+}
+
+body {
+    background-color: var(--navy);
+    color: white;
+}
+
+.about-nav {
+    background-color:var(--blue);
+}
+
+h1 {
+    color: var(--yellow);
+}
+
+.carousel {
+    height: 600px;
+    perspective: 200px;
+}
+
+.carousel .carousel-item {
+    width: 375px;
+    background: var(--yellow);
+    padding: 20px;
+    height: auto;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.carousel-img {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+img {
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+    border: 3px var(--navy) solid;
+}
+
+.carousel-text {
+    color: var(--navy);
+    font-size: 1rem;
+}
+
+@media (max-width: 500px) {
+    .carousel .carousel-item {
+        width: 300px;
+    }
+}
