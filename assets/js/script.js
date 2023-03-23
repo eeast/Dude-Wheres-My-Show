@@ -34,7 +34,7 @@ const options = {
 
 
 // Title Search
-let title = "Alien";
+let title = "Dude where's my car";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -95,8 +95,6 @@ let processTitleSearch = function() {
     }
 }
 
-
-
 //creates local storage for search history and logs titles in console from searchHistoryArr
 // const searchHistory = function() { 
 // let searchHistory = localStorage.getItem('searchHistory');
@@ -152,6 +150,23 @@ let loadTitleSearch = function(res) {
                         }
                     }
                     console.log(output);
+                    if (output.includes('prime')) {
+                        console.log("this movie has prime");   
+                    } else if (output.includes('hulu')){
+                        console.log("this movie has hulu");
+                    } else if (output.includes('apple')){
+                        console.log("this movie has apple");
+                    } else if (output.includes('disney')){
+                        console.log("this movie has disney")
+                    } else if (output.includes('hbo')){
+                        console.log("this movie has hbo")
+                    } else if (output.includes('netflix')){
+                        console.log("this movie has netflix");
+                    } else if (output.includes('paramount')){
+                        console.log("this movie has paramount");
+                    } else {
+                        console.log("this movie uses a no name service");
+                    }
                 }
             }
 
