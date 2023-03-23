@@ -43,12 +43,15 @@ let output_language = "en";
 
 let processTitleSearch = function() {
     results = JSON.parse(localStorage.getItem(title));
-    if (results === null) {
+    if (results === null || results === undefined) {
         fetch(`https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&type=${type}&output_language=${output_language}`, options)
 	    .then(response => response.json())
 	    .then(response => {
-            localStorage.setItem(title,JSON.stringify(response.result))
-            loadTitleSearch(response.result)
+            console.log(response);
+            if (response.status == 200) {
+                localStorage.setItem(title,JSON.stringify(response.result))
+                loadTitleSearch(response.result)
+            }
         })
 	    .catch(err => console.error(err));
     } else {
