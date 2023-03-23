@@ -42,9 +42,21 @@ img {
     width: 50%;
     height: auto;
     border-radius: 50%;
+    border: 3px #073B4C solid;
 }
 
 .carousel-text {
     color: #073B4C;
     font-size: 1rem;
+}
+
+@media screen and (max-width: 500px) {
+    .carousel {
+        height: 450px;
+        perspective: 90px;
+    }
+
+    .carousel .carousel-item {
+        width: 65%;
+    }
 }
