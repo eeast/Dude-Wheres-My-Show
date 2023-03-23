@@ -24,8 +24,8 @@
    <div class="searchregion">
     <!-- Title - top left corner -->
     <!-- Search button + modal(below) - centered on bar, large button -->
-    <input type="text" placeholder="Enter search here" class="text-white"></input>
-    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit"
+    <input type="text" placeholder="Enter search here" class="text-white" id="selector"></input>
+    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" id="searchBtn"
         value="submit">Search</button>
     <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
 
@@ -71,6 +71,7 @@
                             </div>
                             <!-- add trailer -->
                 </section>
+                <button class="sml-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
 
             </div>
 
@@ -79,6 +80,10 @@
                     <!-- Favorites and Search History - stretch 20% -->
                 <aside>
                     <p>ASIDE (favorites and recent searches)</p>
+                    <h6 style="color: #FFD166; text-decoration: underline;">Favorites</h6>
+                    <div id ="favorites" title="Favorites"></div>
+                    <h6 style="color: #FFD166; text-decoration: underline;">Search History</h6>
+                    <div id ="searchHist" title="searchHist"></div>
                 </aside>
             </div>
         </div>

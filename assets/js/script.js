@@ -34,10 +34,54 @@ const options = {
 
 
 // Title Search
-let title = "Alien";
+let title = "jaws";
 let country = "us";
 let type = "";
 let output_language = "en";
+let searchInput = []
+
+$('#searchBtn').on('click', function() {
+    var selectEl = $('#selector')
+    if(selectEl.val().length > 0){
+        searchInput.push(selectEl.val())
+        localStorage.setItem("movie-title", JSON.stringify(searchInput))
+        addSearchHistory();
+
+    }
+})
+
+
+
+function addSearchHistory(searcterm) {
+    // $('#searchHist').append('<div>' + searchTerm['searchTerm'] + '</div>')
+    var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
+    if (movieTitles){
+        searchInput = movieTitles
+    }
+    $('#searchHist').empty()
+    for (i=0; i < searchInput.length; i++){
+        $('#searchHist').append('<li>' + searchInput[i] + '</li>')
+    }
+
+}
+
+addSearchHistory();
+
+function addToFavotrites(lastsearch){
+    var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
+    if (movieTitles){
+        searchInput = movieTitles
+    }
+        let lastItem = searchInput[searchInput.length -1]
+        console.log(lastItem)
+        // $('#favorites').empty()
+        $('#favorites').append('<li>' + lastItem + '</li>')
+}
+
+$('#addFavorite').on('click', function() {
+    addToFavotrites();
+    // processTitleSearch();
+})
 
 
 
@@ -58,7 +102,7 @@ let processTitleSearch = function() {
 
 
 
-//creates local storage for search history and logs titles in console from searchHistoryArr
+// creates local storage for search history and logs titles in console from searchHistoryArr
 const searchHistory = function() { 
 let searchHistory = localStorage.getItem('searchHistory');
 let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
@@ -95,26 +139,26 @@ let loadTitleSearch = function(res) {
             runtimeEl.append(`Runtime: ${res[i].runtime} min`);
 
             // Parsing the streaming services into a conscise (no duplicates) printable list
-            const strServices = res[i].streamingInfo.us;
-            if (strServices === undefined) {
-                console.log("No Streaming Services Available...");
-            } else {
-                for (const property in strServices) {
-                    let output = `${property}: `;
-                    let typeSet = new Set();
-                    for (let i = 0; i < strServices[property].length; i++) {
-                        typeSet.add(strServices[property][i].type)
-                    }
-                    let typeArray = Array.from(typeSet);
-                    for (let i = 0; i < typeArray.length; i++) {
-                        output += typeArray[i];
-                        if (i < typeArray.length - 1) {
-                            output += ", ";
-                        }
-                    }
-                    console.log(output);
-                }
-            }
+            // const strServices = res[i].streamingInfo.us;
+            // if (strServices === undefined) {
+            //     console.log("No Streaming Services Available...");
+            // } else {
+            //     for (const property in strServices) {
+            //         let output = `${property}: `;
+            //         let typeSet = new Set();
+            //         for (let i = 0; i < strServices[property].length; i++) {
+            //             typeSet.add(strServices[property][i].type)
+            //         }
+            //         let typeArray = Array.from(typeSet);
+            //         for (let i = 0; i < typeArray.length; i++) {
+            //             output += typeArray[i];
+            //             if (i < typeArray.length - 1) {
+            //                 output += ", ";
+            //             }
+            //         }
+            //         console.log(output);
+            //     }
+            // }
 
             // Trailer Link
             console.log(res[i].youtubeTrailerVideoLink);
@@ -173,4 +217,4 @@ let loadTitleSearch = function(res) {
 }
 
 processTitleSearch()
-searchHistory()
+// searchHistory()

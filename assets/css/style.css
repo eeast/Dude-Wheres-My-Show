@@ -44,3 +44,18 @@ max-width: 50%;
 .searchregion{
     
 }
+
+aside {
+    height: 100%;
+    width: 100%;
+    padding-left: 15px;
+    margin-left: 15px;
+    padding-right: 15px;
+    margin-right: 15px;
+    float: right;
+    font-style: bold;
+    border: solid;
+    display: inline;
+    text-align: center;
+
+}
