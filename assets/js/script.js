@@ -1,4 +1,10 @@
 // id => idEl
+const posterEl = $('#movie-poster');
+const titleEl = $('#movie-title');
+const yearEl = $('#year');
+const runtimeEl = $('#runtime');
+const servicesEl = $('#services');
+const trailerEl = $('#trailer');
 // start-btn => startBtn
 
 
@@ -12,7 +18,6 @@
 
 // Search history list
 
-// Another comment
 
 // For modal
 $(document).ready(function () {
@@ -22,14 +27,14 @@ $(document).ready(function () {
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '3a98a28e7dmsh1d83ce3a7680f1bp16bc55jsn1d6758dbbe6f',
+		'X-RapidAPI-Key': _APIKEY_,
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
 
 
 // Title Search
-let title = "Game of Thrones";
+let title = "Alien";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -50,23 +55,44 @@ let processTitleSearch = function() {
         loadTitleSearch(results);
     }
 }
-    
 
+
+
+//creates local storage for search history and logs titles in console from searchHistoryArr
+const searchHistory = function() { 
+let searchHistory = localStorage.getItem('searchHistory');
+let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
+
+const index = searchHistoryArr.indexOf(title);
+if (index !== -1) {
+  searchHistoryArr.splice(index, 1);
+}
+searchHistoryArr.unshift(title);
+
+localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
+
+for(let i = 0;i < searchHistoryArr.length ;i++){
+    console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
+   };
+}
 
 let loadTitleSearch = function(res) {
     console.log(res);
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1; i++) {
         if (res[i].type === "movie") {
             // Title
             console.log(res[i].title);
+            titleEl.append(res[i].title);
 
             // Year
             console.log(`Year: ${res[i].year}`);
+            yearEl.append(res[i].year);
             
 
             // Runtime
             console.log(`${res[i].runtime} minutes`);
+            runtimeEl.append(`Runtime: ${res[i].runtime} min`);
 
             // Parsing the streaming services into a conscise (no duplicates) printable list
             const strServices = res[i].streamingInfo.us;
@@ -95,6 +121,8 @@ let loadTitleSearch = function(res) {
 
             // Poster
             console.log(res[i].posterURLs[342]);
+            posterEl.prepend(`<img id="movie-poster" src="${res[i].posterURLs[342]}" />`);
+            
         } else if (res[i].type === "series") {
             // Title
             console.log(res[i].title);
@@ -116,11 +144,11 @@ let loadTitleSearch = function(res) {
                 if (strServices === undefined) {
                     console.log("No Streaming Services Available...");
                 } else {
-                    for (const serviceProvider in strServices) {
-                        let output = `${serviceProvider}: `;
+                    for (const property in strServices) {
+                        let output = `${property}: `;
                         let typeSet = new Set();
-                        for (let i = 0; i < strServices[serviceProvider].length; i++) {
-                            typeSet.add(strServices[serviceProvider][i].type)
+                        for (let i = 0; i < strServices[property].length; i++) {
+                            typeSet.add(strServices[property][i].type)
                         }
                         let typeArray = Array.from(typeSet);
                         for (let i = 0; i < typeArray.length; i++) {
@@ -145,3 +173,4 @@ let loadTitleSearch = function(res) {
 }
 
 processTitleSearch()
+searchHistory()
