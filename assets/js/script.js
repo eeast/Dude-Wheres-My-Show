@@ -58,10 +58,10 @@ $("#main-search-button").click(function () {
 // Advanced search button
 $("#modal1-search-button").click(function () {
     var advancedTitle = $("#modal-input-text").val();
-    var advancedCountry = $("#country-dropdown").val();
-    var advancedType = $("#type-dropdown").val();
-    var advancedLanguage = $("#language-dropdown").val();
-    processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
+    // var advancedCountry = $("#country-dropdown").val();
+    // var advancedType = $("#type-dropdown").val();
+    // var advancedLanguage = $("#language-dropdown").val();
+    processTitleSearch(advancedTitle);
 });
 
 
