@@ -18,7 +18,6 @@ const trailerEl = $('#trailer');
 
 // Search history list
 
-// Another comment
 
 // For modal
 $(document).ready(function () {
@@ -35,7 +34,7 @@ const options = {
 
 
 // Title Search
-let title = "Dude where's my car";
+let title = "Alien";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -56,8 +55,26 @@ let processTitleSearch = function() {
         loadTitleSearch(results);
     }
 }
-    
 
+
+
+//creates local storage for search history and logs titles in console from searchHistoryArr
+const searchHistory = function() { 
+let searchHistory = localStorage.getItem('searchHistory');
+let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
+
+const index = searchHistoryArr.indexOf(title);
+if (index !== -1) {
+  searchHistoryArr.splice(index, 1);
+}
+searchHistoryArr.unshift(title);
+
+localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
+
+for(let i = 0;i < searchHistoryArr.length ;i++){
+    console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
+   };
+}
 
 let loadTitleSearch = function(res) {
     console.log(res);
@@ -156,3 +173,4 @@ let loadTitleSearch = function(res) {
 }
 
 processTitleSearch()
+searchHistory()
