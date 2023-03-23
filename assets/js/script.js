@@ -18,7 +18,6 @@ const trailerEl = $('#trailer');
 
 // Search history list
 
-// Another comment
 
 // For modal
 $(document).ready(function () {
@@ -49,31 +48,23 @@ let processTitleSearch = function(title, country, type, output_language) {
     }
 }
 
-// Main search button
-$("#main-search-button").click(function () {
-    var title = $("#main-search-input").val();
-    console.log(title);
-    processTitleSearch(title);
-    console.log(processTitleSearch(title));
-})
+//creates local storage for search history and logs titles in console from searchHistoryArr
+const searchHistory = function() { 
+let searchHistory = localStorage.getItem('searchHistory');
+let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
 
-// Advanced search button
-$("#modal1-search-button").click(function () {
-    var advancedTitle = $("#modal-input-text").val();
-    var advancedCountry = $("#country-dropdown").val();
-    var advancedType = $("#type-dropdown").val();
-    var advancedLanguage = $("#language-dropdown").val();
-    processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
-});
+const index = searchHistoryArr.indexOf(title);
+if (index !== -1) {
+  searchHistoryArr.splice(index, 1);
+}
+searchHistoryArr.unshift(title);
 
+localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
 
-
-$(document).ready(function () {
-  $("select").formSelect();
-});
-
-// **************************************
-
+for(let i = 0;i < searchHistoryArr.length ;i++){
+    console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
+   };
+}
 
 let loadTitleSearch = function(res) {
     console.log(res);
@@ -112,6 +103,23 @@ let loadTitleSearch = function(res) {
                         }
                     }
                     console.log(output);
+                    if (output.includes('prime')) {
+                        console.log("this movie has prime");   
+                    } else if (output.includes('hulu')){
+                        console.log("this movie has hulu");
+                    } else if (output.includes('apple')){
+                        console.log("this movie has apple");
+                    } else if (output.includes('disney')){
+                        console.log("this movie has disney")
+                    } else if (output.includes('hbo')){
+                        console.log("this movie has hbo")
+                    } else if (output.includes('netflix')){
+                        console.log("this movie has netflix");
+                    } else if (output.includes('paramount')){
+                        console.log("this movie has paramount");
+                    } else {
+                        console.log("this movie uses a no name service");
+                    }
                 }
             }
 
@@ -172,3 +180,4 @@ let loadTitleSearch = function(res) {
 }
 
 processTitleSearch()
+searchHistory()
