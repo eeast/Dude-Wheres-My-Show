@@ -38,7 +38,46 @@ let title = "Dude where's my car";
 let country = "us";
 let type = "";
 let output_language = "en";
+let searchInput = []
 
+$('#main-search-button').on('click', function() {
+    var selectEl = $('#main-search-input')
+    if(selectEl.val().length > 0){
+        searchInput.push(selectEl.val())
+        localStorage.setItem("movie-title", JSON.stringify(searchInput))
+        addSearchHistory();
+
+    }
+})
+
+function addSearchHistory() {
+    // $('#searchHist').append('<div>' + searchTerm['searchTerm'] + '</div>')
+    var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
+    if (movieTitles){
+        searchInput = movieTitles
+    }
+    $('#searchHist').empty()
+    for (i=0; i < searchInput.length; i++){
+        $('#searchHist').append('<li>' + searchInput[i] + '</li>')
+    }
+
+}
+
+addSearchHistory();
+
+function addToFavorites(){
+    var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
+    if (movieTitles){
+        searchInput = movieTitles
+    }
+        let lastItem = searchInput[searchInput.length -1]
+        console.log(lastItem)
+        $('#favorites').append('<li>' + lastItem + '</li>')
+}
+
+$('#addFavorite').on('click', function() {
+    addToFavorites();
+})
 
 
 let processTitleSearch = function() {
@@ -60,22 +99,22 @@ let processTitleSearch = function() {
 }
 
 //creates local storage for search history and logs titles in console from searchHistoryArr
-const searchHistory = function() { 
-let searchHistory = localStorage.getItem('searchHistory');
-let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
+// const searchHistory = function() { 
+// let searchHistory = localStorage.getItem('searchHistory');
+// let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
 
-const index = searchHistoryArr.indexOf(title);
-if (index !== -1) {
-  searchHistoryArr.splice(index, 1);
-}
-searchHistoryArr.unshift(title);
+// const index = searchHistoryArr.indexOf(title);
+// if (index !== -1) {
+//   searchHistoryArr.splice(index, 1);
+// }
+// searchHistoryArr.unshift(title);
 
-localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
+// localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
 
-for(let i = 0;i < searchHistoryArr.length ;i++){
-    console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
-   };
-}
+// for(let i = 0;i < searchHistoryArr.length ;i++){
+//     console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
+//    };
+// }
 
 let loadTitleSearch = function(res) {
     console.log(res);
@@ -191,4 +230,4 @@ let loadTitleSearch = function(res) {
 }
 
 processTitleSearch()
-searchHistory()
+// searchHistory()
