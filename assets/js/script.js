@@ -105,119 +105,118 @@ $("#modal1-search-button").click(function () {
 
 let loadTitleSearch = function (res) {
     console.log(res);
+    console.log(res[0].youtubeTrailerVideoId)
 
     for (let i = 0; i < 1; i++) {
-      // Title
-      console.log(res[i].title);
-      titleEl.append(res[i].title);
+        // Title
+        console.log(res[i].title);
+        titleEl.append(res[i].title);
 
-      if (res[i].type === "movie") {
-        // Year
-        console.log(`Year: ${res[i].year}`);
-        yearEl.append(res[i].year);
+        if (res[i].type === "movie") {
+            // Year
+            console.log(`Year: ${res[i].year}`);
+            yearEl.append(res[i].year);
 
-        // Runtime
-        console.log(`${res[i].runtime} minutes`);
-        runtimeEl.append(`Runtime: ${res[i].runtime} min`);
+            // Runtime
+            console.log(`${res[i].runtime} minutes`);
+            runtimeEl.append(`Runtime: ${res[i].runtime} min`);
 
-        // Parsing the streaming services into a concise (no duplicates) printable list
-        const strServices = res[i].streamingInfo.us;
-        if (strServices === undefined) {
-          console.log("No Streaming Services Available...");
-        } else {
-          for (const property in strServices) {
-            let output = `${property}: `;
-            let typeSet = new Set();
-            for (let i = 0; i < strServices[property].length; i++) {
-              typeSet.add(strServices[property][i].type);
-            }
-            let typeArray = Array.from(typeSet);
-            for (let i = 0; i < typeArray.length; i++) {
-              output += typeArray[i];
-              if (i < typeArray.length - 1) {
-                output += ", ";
-              }
-            }
-            console.log(output);
-            if (output.includes("prime")) {
-              console.log("this movie has prime");
-            } else if (output.includes("hulu")) {
-              console.log("this movie has hulu");
-            } else if (output.includes("apple")) {
-              console.log("this movie has apple");
-            } else if (output.includes("disney")) {
-              console.log("this movie has disney");
-            } else if (output.includes("hbo")) {
-              console.log("this movie has hbo");
-            } else if (output.includes("netflix")) {
-              console.log("this movie has netflix");
-            } else if (output.includes("paramount")) {
-              console.log("this movie has paramount");
+            // Parsing the streaming services into a concise (no duplicates) printable list
+            const strServices = res[i].streamingInfo.us;
+            if (strServices === undefined) {
+                console.log("No Streaming Services Available...");
             } else {
-              console.log("this movie uses a no name service");
-            }
-          }
-        }
-
-        // Trailer Link
-        // Youtube modal popup
-        let youtubeID = res[i].youtubeTrailerVideoId;
-        console.log(youtubeID);
-        let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
-        document.getElementById("YT-iframe").src = youtubeLink;
-
-        // Poster
-        console.log(res[i].posterURLs[342]);
-        posterEl.prepend(
-          `<img id="movie-poster" src="${res[i].posterURLs[342]}" />`
-        );
-      } else if (res[i].type === "series") {
-        // Year
-        if (res[i].firstAirYear === res[i].lastAirYear) {
-          console.log(`On Air: ${res[i].firstAirYear}`);
-        } else {
-          console.log(`On Air: ${res[i].firstAirYear}-${res[i].lastAirYear}`);
-        }
-
-        // Number of Seasons
-        console.log(`${res[i].seasonCount} seasons`);
-
-        // Parsing the streaming services into a conscise (no duplicates) printable list
-        for (let season of res[i].seasons) {
-          console.log(`${season.title}`);
-          const strServices = season.streamingInfo.us;
-          if (strServices === undefined) {
-            console.log("No Streaming Services Available...");
-          } else {
-            for (const property in strServices) {
-              let output = `${property}: `;
-              let typeSet = new Set();
-              for (let i = 0; i < strServices[property].length; i++) {
-                typeSet.add(strServices[property][i].type);
-              }
-              let typeArray = Array.from(typeSet);
-              for (let i = 0; i < typeArray.length; i++) {
-                output += typeArray[i];
-                if (i < typeArray.length - 1) {
-                  output += ", ";
+                for (const property in strServices) {
+                    let output = `${property}: `;
+                    let typeSet = new Set();
+                    for (let i = 0; i < strServices[property].length; i++) {
+                        typeSet.add(strServices[property][i].type);
+                    }
+                    let typeArray = Array.from(typeSet);
+                    for (let i = 0; i < typeArray.length; i++) {
+                            output += typeArray[i];
+                        if (i < typeArray.length - 1) {
+                            output += ", ";
+                        }
+                    }
+                    console.log(output);
+                    if (output.includes("prime")) {
+                        console.log("this movie has prime");
+                    } else if (output.includes("hulu")) {
+                        console.log("this movie has hulu");
+                    } else if (output.includes("apple")) {
+                        console.log("this movie has apple");
+                    } else if (output.includes("disney")) {
+                        console.log("this movie has disney");
+                    } else if (output.includes("hbo")) {
+                        console.log("this movie has hbo");
+                    } else if (output.includes("netflix")) {
+                        console.log("this movie has netflix");
+                    } else if (output.includes("paramount")) {
+                        console.log("this movie has paramount");
+                    } else {
+                        console.log("this movie uses a no name service");
+                    }
                 }
-              }
-              console.log(output);
             }
-          }
+
+            // Trailer Link
+            // Youtube modal popup
+            let youtubeID = res[i].youtubeTrailerVideoId;
+            console.log(youtubeID);
+            let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
+            document.getElementById("YT-iframe").src = youtubeLink;
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
+            posterEl.prepend(`<img id="movie-poster" src="${res[i].posterURLs[342]}" />`);
+        } else if (res[i].type === "series") {
+            // Year
+            if (res[i].firstAirYear === res[i].lastAirYear) {
+                console.log(`On Air: ${res[i].firstAirYear}`);
+            } else {
+                console.log(`On Air: ${res[i].firstAirYear}-${res[i].lastAirYear}`);
+            }
+
+            // Number of Seasons
+            console.log(`${res[i].seasonCount} seasons`);
+
+            // Parsing the streaming services into a conscise (no duplicates) printable list
+            for (let season of res[i].seasons) {
+                console.log(`${season.title}`);
+                const strServices = season.streamingInfo.us;
+                if (strServices === undefined) {
+                    console.log("No Streaming Services Available...");
+                } else {
+                    for (const property in strServices) {
+                        let output = `${property}: `;
+                        let typeSet = new Set();
+                        for (let i = 0; i < strServices[property].length; i++) {
+                            typeSet.add(strServices[property][i].type);
+                        }
+                        let typeArray = Array.from(typeSet);
+                        for (let i = 0; i < typeArray.length; i++) {
+                            output += typeArray[i];
+                            if (i < typeArray.length - 1) {
+                                output += ", ";
+                            }
+                        }
+                    console.log(output);
+                    }
+                }
+            }
+
+            // Trailer Link
+            // Youtube modal popup
+            let youtubeID = res[i].youtubeTrailerVideoId;
+            console.log(youtubeID);
+            let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
+            document.getElementById("YT-iframe").src = youtubeLink;
+            console.log(res[i].youtubeTrailerVideoLink);
+
+            // Poster
+            console.log(res[i].posterURLs[342]);
         }
-
-        // Trailer Link
-        // Youtube modal popup
-        let youtubeID = res[i].youtubeTrailerVideoId;
-        console.log(youtubeID);
-        let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
-        document.getElementById("YT-iframe").src = youtubeLink;
-        console.log(res[i].youtubeTrailerVideoLink);
-
-        // Poster
-        console.log(res[i].posterURLs[342]);
-      }
     }
 }
 

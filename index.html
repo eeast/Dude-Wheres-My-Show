@@ -14,114 +14,103 @@
 <body>
     <nav class="main-nav">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">DUDE</a>
+            <a href="#" class="brand-logo center">Dude, Where's My Show?</a>
             <ul id="nav-mobile" class="left">
                 <li>
                     <a href="about.html"><i class="material-icons left"></i>About Us</a>
                 </li>
             </ul>
+        </div>
     </nav>
-   <div class="searchregion">
-    <!-- Title - top left corner -->
-    <!-- Search button + modal(below) - centered on bar, large button -->
-    <input id="main-search-input" type="text" placeholder="Enter search here" class="text-white"></input>
-    <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" id="main-search-button" type="submit"
-        value="submit">Search</button>
-    <!-- <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="submit" value="submit">Advanced Search</button> -->
+    <div class="searchregion">
+        <!-- Search button + modal(below) - centered on bar, large button -->
+        <input id="main-search-input" type="text" placeholder="Enter search here" class="text-white"></input>
+        <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" id="main-search-button" type="submit"
+            value="submit">Search</button>
 
-    <!-- Modal Trigger -->
-    <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable"
-        href="#modal1">Advanced Search</a>
+        <!-- Adv Search Modal Trigger -->
+        <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable"
+            href="#modal1">Advanced Search</a>
 
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Advanced Search</h4>
-            <input class="modal-input-text" id="modal-input-text" type="text" placeholder="Enter search here"></input>
+        <!-- Adv Search Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Advanced Search</h4>
+                <input class="modal-input-text" id="modal-input-text" type="text" placeholder="Enter search here"></input>
 
-            <div class="input-field col s12">
-                <select id="country-dropdown">
-                    <option value="" disabled selected>Choose country</option>
-                    <option value="us">USA</option>
-                    <option value="ca">Canada</option>
-                    <option value="mx">Mexico</option>
-                </select>
-                <label id="advanced-label-1">Country</label>
+                <!-- Country Select dropdown -->
+                <div class="input-field col s12">
+                    <select id="country-dropdown">
+                        <option value="" disabled selected>Choose country</option>
+                        <option value="us">USA</option>
+                        <option value="ca">Canada</option>
+                        <option value="mx">Mexico</option>
+                    </select>
+                    <label id="advanced-label-1">Country</label>
+                </div>
+
+                <!-- Type Select dropdown -->
+                <div class="input-field col s12">
+                    <select id="type-dropdown">
+                        <option value="" disabled selected>Choose type</option>
+                        <option value="movie">Movie</option>
+                        <option value="series">Series</option>
+                        <option value="all">All</option>
+                    </select>
+                    <label id="advanced-label-2">Type</label>
+                </div>
+
+                <!-- Language Select dropdown -->
+                <div class="input-field col s12">
+                    <select id="language-dropdown">
+                        <option value="" disabled selected>Choose language</option>
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                    </select>
+                    <label id="advanced-label-3">Language</label>
+                </div>
             </div>
-
-              <div class="input-field col s12">
-                <select id="type-dropdown">
-                    <option value="" disabled selected>Choose type</option>
-                    <option value="movie">Movie</option>
-                    <option value="series">Series</option>
-                    <option value="all">All</option>
-                </select>
-                <label id="advanced-label-2">Type</label>
+            <div class="modal-footer">
+                <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                <a id="modal1-search-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Search</a>
             </div>
-
-              <div class="input-field col s12">
-                <select id="language-dropdown">
-                    <option value="" disabled selected>Choose language</option>
-                    <option value="en">English</option>
-                    <option value="es">Spanish</option>
-                    <option value="fr">French</option>
-                </select>
-                <label id="advanced-label-3">Language</label>
-            </div>
-
-
         </div>
-        
-        <!-- Other links (tbd) - top right corner -->
-           
-    
-        <div class="modal-footer">
-            <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
-            <a id="modal1-search-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Search</a>
+
+        <!-- YouTube Modal Trigger -->
+        <a class="waves-effect waves-light btn btn-large amber accent-2 modal-trigger" href="#modal2">Youtube Trailer</a>
+
+        <!-- YouTube Modal Structure -->
+        <div id="modal2" class="modal valign-wrapper">
+            <div class="modal-content center-align">
+                <iframe
+                    id="YT-iframe"
+                    class="center-align"
+                    width="90%"
+                    height="315"
+                    src=""
+                    title="YouTube trailer"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
+            </div>
+            <div class="modal-footer">
+                <a href="#modal2" class="modal-close waves-effect waves-green btn-flat">Exit</a>
+            </div>
         </div>
-    </div>
-
-    
-<!-- Youtube embed -->
-          <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn btn-large amber accent-2 modal-trigger" href="#modal2">Youtube Trailer</a>
-
-  <!-- Modal Structure -->
-  <div id="modal2" class="modal valign-wrapper">
-    <div class="modal-content center-align">
-          <iframe
-      id="YT-iframe"
-      class="center-align"
-      width="90%"
-      height="315"
-      src=""
-      title="YouTube trailer"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen
-    ></iframe>
-    </div>
-    <div class="modal-footer">
-      <a href="#modal2" class="modal-close waves-effect waves-green btn-flat">Exit</a>
-    </div>
-  </div>
-          
     </div>
 
     <!-- Other links (tbd) - top right corner -->
 
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
-
         <div class="row">
-
             <div class="col s8">
-
                 <section class="row">
                             <!-- movie poster -->
                             <div class="col s4" id="movie-poster">
                             </div>
-
 
                             <!-- movie info (title, year, runtime, services) -->
                             <div class="col s8" id="movie-info">
@@ -130,17 +119,14 @@
                                 <p id="runtime"></p>
                                 <p id="services"></p>
                             </div>
+
                             <!-- add trailer -->
                             <button class="sml-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
-
                 </section>
-                
-
             </div>
 
             <div id="aside" class="col s4">
-
-                    <!-- Favorites and Search History - stretch 20% -->
+                <!-- Favorites and Search History - stretch 20% -->
                 <aside>
                     <p>ASIDE (favorites and recent searches)</p>
                     <h6 style="color: #FFD166; text-decoration: underline;">Favorites</h6>
@@ -150,24 +136,11 @@
                 </aside>
             </div>
         </div>
-
     </main>
 
     <!-- About us/contact info -->
     <footer></footer>
 
-    </div>
-
-
-
-
-
-
-
-
-    <!-- Materialize script tag -->
-
-    <!-- Do I need a jQuery tag? -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
