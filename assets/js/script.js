@@ -43,6 +43,8 @@ let searchInput = []
 $('#main-search-button').on('click', function() {
     var selectEl = $('#main-search-input')
     if(selectEl.val().length > 0){
+        var title = $("#main-search-input").val();
+        processTitleSearch(title, "us", "", "en");
         searchInput.push(selectEl.val())
         localStorage.setItem("movie-title", JSON.stringify(searchInput))
         addSearchHistory();
@@ -80,7 +82,8 @@ $('#addFavorite').on('click', function() {
 })
 
 
-let processTitleSearch = function() {
+let processTitleSearch = function(title, country, type, output_language) {
+    console.log(title, country, type, output_language);
     results = JSON.parse(localStorage.getItem(title));
     if (results === null || results === undefined) {
         fetch(`https://streaming-availability.p.rapidapi.com/v2/search/title?title=${title}&country=${country}&type=${type}&output_language=${output_language}`, options)
@@ -98,23 +101,18 @@ let processTitleSearch = function() {
     }
 }
 
-//creates local storage for search history and logs titles in console from searchHistoryArr
-// const searchHistory = function() { 
-// let searchHistory = localStorage.getItem('searchHistory');
-// let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
+// ***********************
 
-// const index = searchHistoryArr.indexOf(title);
-// if (index !== -1) {
-//   searchHistoryArr.splice(index, 1);
-// }
-// searchHistoryArr.unshift(title);
+// Advanced search button
+$("#modal1-search-button").click(function () {
+  var advancedTitle = $("#modal-input-text").val();
+  var advancedCountry = $("#country-dropdown").val();
+  var advancedType = $("#type-dropdown").val();
+  var advancedLanguage = $("#language-dropdown").val();
+  processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
+});
 
-// localStorage.setItem('searchHistory', JSON.stringify(searchHistoryArr));
-
-// for(let i = 0;i < searchHistoryArr.length ;i++){
-//     console.log(`this is from local storage at index ${i}: ${searchHistoryArr[i]}`);
-//    };
-// }
+// ***********************
 
 let loadTitleSearch = function(res) {
     console.log(res);
@@ -229,5 +227,9 @@ let loadTitleSearch = function(res) {
     }
 }
 
-processTitleSearch()
-// searchHistory()
+processTitleSearch("Dude Where's My Car", "us", "movie", "en");
+// searchHistory("Dude Where's My Car");
+
+$(document).ready(function () {
+  $("select").formSelect();
+});
