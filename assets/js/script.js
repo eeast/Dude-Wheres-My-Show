@@ -48,6 +48,21 @@ let processTitleSearch = function(title, country, type, output_language) {
     }
 }
 
+// ***********************
+
+// Main search button
+$("#main-search-button").click(function () {
+  var title = $("#main-search-input").val();
+  processTitleSearch(title, "us", "", "en");
+});
+
+$(document).ready(function () {
+  $("select").formSelect();
+});
+
+// ***********************
+
+
 //creates local storage for search history and logs titles in console from searchHistoryArr
 const searchHistory = function() { 
 let searchHistory = localStorage.getItem('searchHistory');
