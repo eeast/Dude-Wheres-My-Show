@@ -34,7 +34,7 @@ const options = {
 
 
 // Title Search
-let title = "alien";
+let title = "Alien";
 let country = "us";
 let type = "";
 let output_language = "en";
@@ -50,9 +50,7 @@ $('#main-search-button').on('click', function() {
     }
 })
 
-
-
-function addSearchHistory(searcterm) {
+function addSearchHistory() {
     // $('#searchHist').append('<div>' + searchTerm['searchTerm'] + '</div>')
     var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
     if (movieTitles){
@@ -67,22 +65,19 @@ function addSearchHistory(searcterm) {
 
 addSearchHistory();
 
-function addToFavotrites(lastsearch){
+function addToFavorites(){
     var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
     if (movieTitles){
         searchInput = movieTitles
     }
         let lastItem = searchInput[searchInput.length -1]
         console.log(lastItem)
-        // $('#favorites').empty()
         $('#favorites').append('<li>' + lastItem + '</li>')
 }
 
 $('#addFavorite').on('click', function() {
-    addToFavotrites();
-    // processTitleSearch();
+    addToFavorites();
 })
-
 
 
 let processTitleSearch = function() {
@@ -102,7 +97,7 @@ let processTitleSearch = function() {
 
 
 
-// creates local storage for search history and logs titles in console from searchHistoryArr
+//creates local storage for search history and logs titles in console from searchHistoryArr
 // const searchHistory = function() { 
 // let searchHistory = localStorage.getItem('searchHistory');
 // let searchHistoryArr = searchHistory ? JSON.parse(searchHistory) : [];
