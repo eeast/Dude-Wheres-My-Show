@@ -6,8 +6,17 @@
     --navy: #073B4C;
 }
 
+@font-face {
+    font-family: 'adl85';
+    src: url('adl85-webfont.woff2') format('woff2'),
+         url('adl85-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 .brand-logo {
-    font-family: 'Ad Lib BT', arial;
+    font-family: 'adl85', sans-serif;
     font-size: 5rem;
 }
 
@@ -26,7 +35,7 @@ h1 {
 }
 
 .carousel {
-    height: 600px;
+    height: 500px;
     perspective: 200px;
 }
 
@@ -58,6 +67,10 @@ img {
 
 @media (max-width: 500px) {
     .carousel .carousel-item {
-        width: 300px;
+        width: 300px; 
     }
+    .carousel {
+        height: 450px;
+        perspective: 100px;
+        }
 }
