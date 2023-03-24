@@ -6,6 +6,11 @@
     --navy: #073B4C;
 }
 
+.brand-logo {
+    font-family: 'Ad Lib BT', arial;
+    font-size: 5rem;
+}
+
 body {
     background-color: var(--navy);
     color: white;
@@ -17,6 +22,7 @@ body {
 
 h1 {
     color: var(--yellow);
+    font-family: 'AdLib', arial;
 }
 
 .carousel {
