@@ -29,7 +29,8 @@ p {
 
 aside,
 input {
-    color: white;
+    color: #118AB2;
+    /* color: white; */
 }
 
 .p {
@@ -52,6 +53,10 @@ max-width: 50%;
 #advanced-label-1, 
 #advanced-label-2, 
 #advanced-label-3 {
+    color: #118AB2;
+}
+
+.advanced-text-color {
     color: #118AB2;
 }
 
