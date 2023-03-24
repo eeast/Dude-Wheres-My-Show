@@ -54,3 +54,18 @@ max-width: 50%;
 #advanced-label-3 {
     color: #118AB2;
 }
+
+aside {
+    height: 100%;
+    width: 100%;
+    padding-left: 15px;
+    margin-left: 15px;
+    padding-right: 15px;
+    margin-right: 15px;
+    float: right;
+    font-style: bold;
+    border: solid;
+    display: inline;
+    text-align: center;
+
+}
