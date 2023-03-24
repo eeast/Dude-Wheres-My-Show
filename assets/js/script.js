@@ -197,5 +197,5 @@ let loadTitleSearch = function(res) {
     }
 }
 
-processTitleSearch()
-searchHistory()
+processTitleSearch("Dude Where's My Car", "us", "movie", "en");
+searchHistory("Dude Where's My Car");
