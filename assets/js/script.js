@@ -233,3 +233,5 @@ processTitleSearch("Dude Where's My Car", "us", "movie", "en");
 $(document).ready(function () {
   $("select").formSelect();
 });
+
+// Maybe we can add the advanced search history to append advanced searched movies to the aside as well, and can be added to favorites
