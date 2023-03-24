@@ -1,24 +1,11 @@
-// id => idEl
+// const idEl = $(#'id')
 const posterEl = $('#movie-poster');
 const titleEl = $('#movie-title');
 const yearEl = $('#year');
 const runtimeEl = $('#runtime');
 const servicesEl = $('#services');
 const trailerEl = $('#trailer');
-// start-btn => startBtn
 
-// Search button
-
-// Search results
-
-// Favorites list
-
-// Search history list
-
-// For modal
-$(document).ready(function () {
-  $(".modal").modal();
-});
 
 const options = {
 	method: 'GET',
@@ -28,7 +15,8 @@ const options = {
 	}
 };
 
-// Title Search
+
+// *** Begin Title Search Section ***
 let searchInput = []
 
 $('#main-search-button').on('click', function() {
@@ -79,9 +67,9 @@ let processTitleSearch = function(title, country, type, output_language) {
 	    .then(response => response.json())
 	    .then(response => {
             console.log(response);
-            if (response.status == 200) {
-                localStorage.setItem(title,JSON.stringify(response.result))
-                loadTitleSearch(response.result)
+            if (response.hasOwnProperty('result')) {
+                localStorage.setItem(title, JSON.stringify(response.result));
+                loadTitleSearch(response.result);
             }
         })
 	    .catch(err => console.error(err));
@@ -90,9 +78,6 @@ let processTitleSearch = function(title, country, type, output_language) {
     }
 }
 
-// ***********************
-
-// Advanced search button
 $("#modal1-search-button").click(function () {
     var advancedTitle = $("#modal-input-text").val();
     var advancedCountry = $("#country-dropdown").val();
@@ -101,128 +86,182 @@ $("#modal1-search-button").click(function () {
     processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
 });
 
-// ***********************
+// *** End Title Search Section ***
 
-let loadTitleSearch = function (res) {
-    console.log(res);
-    console.log(res[0].youtubeTrailerVideoId)
 
-    for (let i = 0; i < 1; i++) {
-        // Title
-        console.log(res[i].title);
-        titleEl.append(res[i].title);
+// *** Begin Youtube Trailer Section ***
 
-        if (res[i].type === "movie") {
-            // Year
-            console.log(`Year: ${res[i].year}`);
-            yearEl.append(res[i].year);
+let loadYoutubeTrailer = function(youtubeID) {
+    console.log(youtubeID);
+    let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
+    document.getElementById("YT-iframe").src = youtubeLink;
+}
 
-            // Runtime
-            console.log(`${res[i].runtime} minutes`);
-            runtimeEl.append(`Runtime: ${res[i].runtime} min`);
+// *** End Youtube Trailer Section ***
 
-            // Parsing the streaming services into a concise (no duplicates) printable list
-            const strServices = res[i].streamingInfo.us;
-            if (strServices === undefined) {
-                console.log("No Streaming Services Available...");
-            } else {
-                for (const property in strServices) {
-                    let output = `${property}: `;
-                    let typeSet = new Set();
-                    for (let i = 0; i < strServices[property].length; i++) {
-                        typeSet.add(strServices[property][i].type);
-                    }
-                    let typeArray = Array.from(typeSet);
-                    for (let i = 0; i < typeArray.length; i++) {
-                            output += typeArray[i];
-                        if (i < typeArray.length - 1) {
-                            output += ", ";
-                        }
-                    }
-                    console.log(output);
-                    if (output.includes("prime")) {
-                        console.log("this movie has prime");
-                    } else if (output.includes("hulu")) {
-                        console.log("this movie has hulu");
-                    } else if (output.includes("apple")) {
-                        console.log("this movie has apple");
-                    } else if (output.includes("disney")) {
-                        console.log("this movie has disney");
-                    } else if (output.includes("hbo")) {
-                        console.log("this movie has hbo");
-                    } else if (output.includes("netflix")) {
-                        console.log("this movie has netflix");
-                    } else if (output.includes("paramount")) {
-                        console.log("this movie has paramount");
-                    } else {
-                        console.log("this movie uses a no name service");
-                    }
-                }
+
+// *** Begin Movie Streaming Section ***
+
+let loadMovieStreaming = function(strServices) {
+    for (const property in strServices) {
+        let output = `${property}: `;
+        let typeSet = new Set();
+        for (let i = 0; i < strServices[property].length; i++) {
+            typeSet.add(strServices[property][i].type);
+        }
+        let typeArray = Array.from(typeSet);
+        for (let i = 0; i < typeArray.length; i++) {
+                output += typeArray[i];
+            if (i < typeArray.length - 1) {
+                output += ", ";
             }
-
-            // Trailer Link
-            // Youtube modal popup
-            let youtubeID = res[i].youtubeTrailerVideoId;
-            console.log(youtubeID);
-            let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
-            document.getElementById("YT-iframe").src = youtubeLink;
-
-            // Poster
-            console.log(res[i].posterURLs[342]);
-            posterEl.prepend(`<img id="movie-poster" src="${res[i].posterURLs[342]}" />`);
-        } else if (res[i].type === "series") {
-            // Year
-            if (res[i].firstAirYear === res[i].lastAirYear) {
-                console.log(`On Air: ${res[i].firstAirYear}`);
-            } else {
-                console.log(`On Air: ${res[i].firstAirYear}-${res[i].lastAirYear}`);
-            }
-
-            // Number of Seasons
-            console.log(`${res[i].seasonCount} seasons`);
-
-            // Parsing the streaming services into a conscise (no duplicates) printable list
-            for (let season of res[i].seasons) {
-                console.log(`${season.title}`);
-                const strServices = season.streamingInfo.us;
-                if (strServices === undefined) {
-                    console.log("No Streaming Services Available...");
-                } else {
-                    for (const property in strServices) {
-                        let output = `${property}: `;
-                        let typeSet = new Set();
-                        for (let i = 0; i < strServices[property].length; i++) {
-                            typeSet.add(strServices[property][i].type);
-                        }
-                        let typeArray = Array.from(typeSet);
-                        for (let i = 0; i < typeArray.length; i++) {
-                            output += typeArray[i];
-                            if (i < typeArray.length - 1) {
-                                output += ", ";
-                            }
-                        }
-                    console.log(output);
-                    }
-                }
-            }
-
-            // Trailer Link
-            // Youtube modal popup
-            let youtubeID = res[i].youtubeTrailerVideoId;
-            console.log(youtubeID);
-            let youtubeLink = "https://www.youtube.com/embed/" + youtubeID;
-            document.getElementById("YT-iframe").src = youtubeLink;
-            console.log(res[i].youtubeTrailerVideoLink);
-
-            // Poster
-            console.log(res[i].posterURLs[342]);
+        }
+        console.log(output);
+        switch (true) {
+            case output.includes('prime'):
+                console.log("this movie has prime");
+                break;
+            case output.includes('hulu'):
+                console.log("this movie has hulu");
+                break;
+            case output.includes('apple'):
+                console.log("this movie has apple");
+                break;
+            case output.includes('disney'):
+                console.log("this movie has disney");
+                break;
+            case output.includes('hbo'):
+                console.log("this movie has hbo");
+                break;
+            case output.includes('netflix'):
+                console.log("this movie has netflix");
+                break;
+            case output.includes('paramount'):
+                console.log("this movie has paramount");
+                break;
+            default:
+                console.log("this movie uses a no name service");
+                break;
         }
     }
 }
 
-processTitleSearch("Dude Where's My Car", "us", "movie", "en");
-// searchHistory("Dude Where's My Car");
+// *** End Movie Streaming Section ***
 
+
+// *** Begin Series Streaming Section ***
+
+let loadSeriesStreaming = function(strServices) {
+    for (const property in strServices) {
+        let output = `${property}: `;
+        let typeSet = new Set();
+        for (let i = 0; i < strServices[property].length; i++) {
+            typeSet.add(strServices[property][i].type);
+        }
+        let typeArray = Array.from(typeSet);
+        for (let i = 0; i < typeArray.length; i++) {
+            output += typeArray[i];
+            if (i < typeArray.length - 1) {
+                output += ", ";
+            }
+        }
+    console.log(output);
+    }
+}
+
+// *** End Series Streaming Section ***
+
+
+// *** Begin Movie Specific Loading Section ***
+
+let loadMovie = function(movie) {
+    // Year
+    console.log(`Year: ${movie.year}`);
+    yearEl.text(movie.year);
+
+    // Runtime
+    console.log(`${movie.runtime} minutes`);
+    runtimeEl.text(`Runtime: ${movie.runtime} min`);
+
+    // Parsing the streaming services into a concise (no duplicates) printable list
+    const strServices = movie.streamingInfo.us;
+    if (strServices === undefined) {
+        console.log("No Streaming Services Available...");
+    } else {
+        loadMovieStreaming(strServices);
+    }
+
+    // Poster
+    posterEl.html(`<img id="movie-poster" src="${movie.posterURLs[342]}" />`);
+}
+
+// *** End Movie Specific Loading Section
+
+
+// *** Begin Series Specific Loading Section
+
+let loadSeries = function(series) {
+    // Year
+    if (series.firstAirYear === series.lastAirYear) {
+        console.log(`On Air: ${series.firstAirYear}`);
+    } else {
+        console.log(`On Air: ${series.firstAirYear}-${series.lastAirYear}`);
+    }
+
+    // Number of Seasons
+    console.log(`${series.seasonCount} seasons`);
+
+    // Parsing the streaming services into a conscise (no duplicates) printable list
+    for (let season of series.seasons) {
+        console.log(`${season.title}`);
+        const strServices = season.streamingInfo.us;
+        if (strServices === undefined) {
+            console.log("No Streaming Services Available...");
+        } else {
+            loadSeriesStreaming(strServices);
+        }
+    }
+
+    // Poster
+    posterEl.html(`<img id="movie-poster" src="${series.posterURLs[342]}" />`);
+}
+
+// *** End Series Specific Loading Section ***
+
+
+// *** Begin Loading Init Section ***
+
+let loadTitleSearch = function (res) {
+    console.log(res);
+    console.log(res[0].youtubeTrailerVideoId);
+
+    for (let i = 0; i < 1; i++) {
+        // Title
+        console.log(res[i].title);
+        titleEl.text(res[i].title);
+
+        // Youtube
+        loadYoutubeTrailer(res[i].youtubeTrailerVideoId);
+
+        if (res[i].type === "movie") {
+            loadMovie(res[i]);
+        } else if (res[i].type === "series") {
+            loadSeries(res[i]);
+        }
+    }
+}
+
+// *** End Loading Init Section ***
+
+// *** Default Page Load ***
+processTitleSearch("Dude Where's My Car", "us", "movie", "en");
+
+
+// *** Load on ready ***
 $(document).ready(function () {
     $("select").formSelect();
+});
+
+$(document).ready(function () {
+    $(".modal").modal();
 });
