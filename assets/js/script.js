@@ -103,6 +103,7 @@ let loadYoutubeTrailer = function(youtubeID) {
 // *** Begin Movie Streaming Section ***
 
 let loadMovieStreaming = function(strServices) {
+    servicesEl.html('');
     for (const property in strServices) {
         let output = `${property}: `;
         let typeSet = new Set();
@@ -116,33 +117,74 @@ let loadMovieStreaming = function(strServices) {
                 output += ", ";
             }
         }
-        console.log(output);
-        switch (true) {
-            case output.includes('prime'):
-                console.log("this movie has prime");
-                break;
-            case output.includes('hulu'):
-                console.log("this movie has hulu");
-                break;
-            case output.includes('apple'):
-                console.log("this movie has apple");
-                break;
-            case output.includes('disney'):
-                console.log("this movie has disney");
-                break;
-            case output.includes('hbo'):
-                console.log("this movie has hbo");
-                break;
-            case output.includes('netflix'):
-                console.log("this movie has netflix");
-                break;
-            case output.includes('paramount'):
-                console.log("this movie has paramount");
-                break;
-            default:
-                console.log("this movie uses a no name service");
-                break;
+        console.log("this is output",output);
+        // switch (true) {
+        //     case output.includes('prime'):
+        //         console.log("this movie has prime");
+        //         servicesEl.append('<a href="https://www.amazon.com/Prime-Video/"><img src= "./streaming-service-icons/Amazon-Prime-Video.jpg" alt="Amazon Prime Video" style="width:100px; height:100px"></a>')
+                
+        //     case output.includes('hulu'):
+        //         console.log("this movie has hulu");
+        //         servicesEl.append('<a href="https://www.hulu.com/"><img src= "./streaming-service-icons/hulu-icon.jpg" alt="Hulu" style="width:100px; height:100px"></a>');
+                
+        //     case output.includes('apple'):
+        //         console.log("this movie has apple");
+        //         servicesEl.append('<a href="https://www.apple.com/apple-tv-plus/"><img src= "./streaming-service-icons/Apple-TV-Logo.png" alt="Apple TV Plus" style="width:100px; height:100px"></a>');
+                
+        //     case output.includes('disney'):
+        //         console.log("this movie has disney");
+        //         servicesEl.append('<a href="https://www.disneyplus.com/"><img src= "./streaming-service-icons/disney-plus-icon.png" alt="Disney Plus" style="width:100px; height:100px"></a>');
+                
+        //     case output.includes('hbo'):
+        //         console.log("this movie has hbo");
+        //         servicesEl.append('<a href="https://www.hbomax.com/"><img src= "./streaming-service-icons/hbo-max-icon.png" alt="HBO Max" style="width:100px; height:100px"></a>');
+                
+        //     case output.includes('netflix'):
+        //         console.log("this movie has netflix");
+        //         servicesEl.append('<a href="https://www.netflix.com/"><img src= "./streaming-service-icons/netflix-icon.png" alt="Netflix" style="width:100px; height:100px"></a>');
+                
+        //     case output.includes('paramount'):
+        //         console.log("this movie has paramount");
+        //         servicesEl.append('<a href="https://www.paramountplus.com/"><img src= "./streaming-service-icons/paramount-plus-icon.png" alt="Paramount Plus" style="width:100px; height:100px"></a>');
+                
+        //     default:
+        //         console.log("this movie uses a no name service");
+        //         break;
+        // }
+
+        if (output.includes('prime')) {
+            console.log("this movie has prime");
+            servicesEl.append('<a href="https://www.amazon.com/Prime-Video/"><img src= "./streaming-service-icons/Amazon-Prime-Video.jpg" alt="Amazon Prime Video" style="width:100px; height:100px"></a>')
         }
+        else if (output.includes('hulu')) {
+            console.log("this movie has hulu");
+            servicesEl.append('<a href="https://www.hulu.com/"><img src= "./streaming-service-icons/hulu-icon.jpg" alt="Hulu" style="width:100px; height:100px"></a>');
+        }
+        else if (output.includes('apple')) {
+            console.log("this movie has apple");
+            servicesEl.append('<a href="https://www.apple.com/apple-tv-plus/"><img src= "./streaming-service-icons/Apple-TV-Logo.png" alt="Apple TV Plus" style="width:100px; height:100px"></a>');
+        }
+        else if (output.includes('disney')) {
+            console.log("this movie has disney");
+            servicesEl.append('<a href="https://www.disneyplus.com/"><img src= "./streaming-service-icons/disney-plus-icon.png" alt="Disney Plus" style="width:100px; height:100px"></a>');
+        }
+        else if (output.includes('hbo')) {
+            console.log("this movie has hbo");
+            servicesEl.append('<a href="https://www.hbomax.com/"><img src= "./streaming-service-icons/hbo-max-icon.png" alt="HBO Max" style="width:100px; height:100px"></a>');
+        }
+        else if (output.includes('netflix')) {
+            console.log("this movie has netflix");
+            servicesEl.append('<a href="https://www.netflix.com/"><img src= "./streaming-service-icons/netflix-icon.png" alt="Netflix" style="width:100px; height:100px"></a>');
+        }
+        else if (output.includes('paramount')) {
+            console.log("this movie has paramount");
+            servicesEl.append('<a href="https://www.paramountplus.com/"><img src= "./streaming-service-icons/paramount-plus-icon.png" alt="Paramount Plus" style="width:100px; height:100px"></a>');
+        }
+        else {
+            console.log("this show/movie is using another service")
+        }
+
+        
     }
 }
 
