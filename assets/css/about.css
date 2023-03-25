@@ -15,23 +15,26 @@
 
 }
 
+/* nav */
+.about-nav {
+    background-color:var(--blue);
+}
+
 .brand-logo {
     font-family: 'adl85', sans-serif;
-    font-size: 5rem;
+    font-size: 2.5rem !important;  
+}
+
+/* about */
+h1 {
+    color: var(--yellow);    
+    font-family: 'adl85', sans-serif;
+    font-size: 2.5rem;
 }
 
 body {
     background-color: var(--navy);
     color: white;
-}
-
-.about-nav {
-    background-color:var(--blue);
-}
-
-h1 {
-    color: var(--yellow);
-    font-family: 'AdLib', arial;
 }
 
 .carousel {
@@ -65,12 +68,36 @@ img {
     font-size: 1rem;
 }
 
-@media (max-width: 500px) {
+/* media queries */
+@media (max-width: 905px) {
+    .brand-logo, h1 {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 758px) {
+    .home-text {
+        display: none;
+    }    
+    }
+
+@media (max-width: 720px) {
+    .brand-logo {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 635px) {
     .carousel .carousel-item {
         width: 300px; 
     }
     .carousel {
-        height: 450px;
+        height: 425px;
         perspective: 100px;
-        }
+    }
+
+    .title {
+        display: none;
+    }
 }
+
