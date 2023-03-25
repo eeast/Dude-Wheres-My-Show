@@ -18,6 +18,7 @@ const options = {
 
 // *** Begin Title Search Section ***
 let searchInput = []
+let favorites = []
 
 $('#main-search-button').on('click', function() {
     var selectEl = $('#main-search-input')
@@ -38,7 +39,11 @@ function addSearchHistory() {
     }
     $('#searchHist').empty()
     for (i=0; i < searchInput.length; i++){
-        $('#searchHist').append('<li>' + searchInput[i] + '</li>')
+        var button =$('<li><a class="waves-effect waves-light btn-small">' + searchInput[i] + '</a></li>')
+        button.click(function(event){
+            processTitleSearch($(event.target).text(), "us", "", "en")
+        })
+        $('#searchHist').append(button)
     }
 
 }
@@ -46,16 +51,17 @@ function addSearchHistory() {
 addSearchHistory();
 
 function addToFavorites(){
-    var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
-    if (movieTitles){
-        searchInput = movieTitles
-    }
     let lastItem = searchInput[searchInput.length -1]
-    console.log(lastItem)
-    $('#favorites').append('<li>' + lastItem + '</li>')
+    favorites.push(lastItem)
+    localStorage.setItem('Favorites', JSON.stringify(favorites))
+    var button = $('<li><a class="waves-light btn-small">' + lastItem +'</a></li>')
+    button.click(function(event){
+        processTitleSearch($(event.target).text(), "us", "", "en");
+    })
+    $('#favorites').append(button)
 }
 
-$('#addFavorite').on('click', function() {
+$('#addFavorite').on('click', function() { 
     addToFavorites();
 })
 
