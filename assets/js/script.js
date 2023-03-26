@@ -40,7 +40,7 @@ function addSearchHistory() {
     for (i=0; i < searchInput.length; i++){
         $('#searchHist').append('<li>' + searchInput[i] + '</li>')
     }
-
+    
 }
 
 addSearchHistory();
@@ -84,6 +84,14 @@ $("#modal1-search-button").click(function () {
     var advancedType = $("#type-dropdown").val();
     var advancedLanguage = $("#language-dropdown").val();
     processTitleSearch(advancedTitle, advancedCountry, advancedType, advancedLanguage);
+
+    var selectEl = $("#modal-input-text");
+    if (selectEl.val().length > 0) {
+      advancedTitle;
+      searchInput.push(advancedTitle);
+      localStorage.setItem("movie-title", JSON.stringify(searchInput));
+      addSearchHistory();
+    }
 });
 
 // *** End Title Search Section ***
@@ -307,3 +315,5 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".modal").modal();
 });
+
+// Maybe we can add the advanced search history to append advanced searched movies to the aside as well, and can be added to favorites
