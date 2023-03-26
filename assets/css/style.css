@@ -69,3 +69,8 @@ aside {
     text-align: center;
 
 }
+
+#stream-icon {
+    width: 250px;
+    height: 250px;
+}
