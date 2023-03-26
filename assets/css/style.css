@@ -55,6 +55,10 @@ max-width: 50%;
     color: #118AB2;
 }
 
+.advanced-text-color {
+    color: #118AB2;
+}
+
 aside {
     height: 100%;
     width: 100%;
@@ -70,7 +74,13 @@ aside {
 
 }
 
+
 .history-btn,
 .favorites-btn {
     margin: 5px;
+}
+
+#stream-icon {
+    width: 250px;
+    height: 250px;
 }
