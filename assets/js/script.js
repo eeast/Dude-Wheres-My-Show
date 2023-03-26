@@ -32,37 +32,52 @@ $('#main-search-button').on('click', function() {
 })
 
 function addSearchHistory() {
-    // $('#searchHist').append('<div>' + searchTerm['searchTerm'] + '</div>')
     var movieTitles = JSON.parse(localStorage.getItem('movie-title'))
     if (movieTitles){
         searchInput = movieTitles
     }
     $('#searchHist').empty()
     for (i=0; i < searchInput.length; i++){
-        var button =$('<li><a class="waves-effect waves-light btn-small">' + searchInput[i] + '</a></li>')
+        var button =$('<li><a class="waves-effect waves-light btn-small history-btn">' + searchInput[i] + '</a></li>')
         button.click(function(event){
             processTitleSearch($(event.target).text(), "us", "", "en")
+            searchInput.push(searchInput.splice(searchInput.indexOf($(event.target).text()),1)[0])
+            localStorage.setItem("movie-title", JSON.stringify(searchInput))
         })
         $('#searchHist').append(button)
     }
 
 }
+function saveToFavorites() {
+    var searchInput = JSON.parse(localStorage.getItem('movie-title'))
+    if (searchInput){
+        let lastItem = searchInput[searchInput.length -1]
+        favorites.push(lastItem)
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+        loadFavorites();
+    }
+}
 
-addSearchHistory();
 
-function addToFavorites(){
-    let lastItem = searchInput[searchInput.length -1]
-    favorites.push(lastItem)
-    localStorage.setItem('Favorites', JSON.stringify(favorites))
-    var button = $('<li><a class="waves-light btn-small">' + lastItem +'</a></li>')
-    button.click(function(event){
-        processTitleSearch($(event.target).text(), "us", "", "en");
-    })
-    $('#favorites').append(button)
+function loadFavorites(){
+    favorites = JSON.parse(localStorage.getItem('favorites'))
+    if (favorites){
+        console.log(favorites)
+        $('#favorites').empty()
+        for(i=0; i < favorites.length; i++) {
+            var button = $('<li><a class="waves-light btn-small favorites-btn">' + favorites[i] + '</a></li>')
+            button.click(function(event){
+                processTitleSearch($(event.target).text(), "us", "", "en");
+            })
+            $('#favorites').append(button)
+        }
+    } else {
+        favorites = []
+    }
 }
 
 $('#addFavorite').on('click', function() { 
-    addToFavorites();
+    saveToFavorites();
 })
 
 let processTitleSearch = function(title, country, type, output_language) {
@@ -261,7 +276,8 @@ let loadTitleSearch = function (res) {
 
 // *** Default Page Load ***
 processTitleSearch("Dude Where's My Car", "us", "movie", "en");
-
+addSearchHistory();
+loadFavorites();
 
 // *** Load on ready ***
 $(document).ready(function () {

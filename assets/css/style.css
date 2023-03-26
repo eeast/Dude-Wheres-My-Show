@@ -69,3 +69,8 @@ aside {
     text-align: center;
 
 }
+
+.history-btn,
+.favorites-btn {
+    margin: 5px;
+}
