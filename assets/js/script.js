@@ -20,9 +20,16 @@ const options = {
 let searchInput = []
 let favorites = []
 
+
+$('#clearSearch').on('click', function(event) {
+    event.preventDefault();
+    localStorage.removeItem('movie-title');
+    $('#searchHist').empty()
+})
+
 $('#main-search-button').on('click', function() {
     var selectEl = $('#main-search-input')
-    if(selectEl.val().length > 0){
+    if(selectEl.val().length > 0 && searchInput.includes(selectEl.val()) === false){
         var title = $("#main-search-input").val();
         processTitleSearch(title, "us", "", "en");
         searchInput.push(selectEl.val())
@@ -52,9 +59,11 @@ function saveToFavorites() {
     var searchInput = JSON.parse(localStorage.getItem('movie-title'))
     if (searchInput){
         let lastItem = searchInput[searchInput.length -1]
-        favorites.push(lastItem)
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-        loadFavorites();
+        if(favorites.includes(lastItem) === false){
+            favorites.push(lastItem)
+            localStorage.setItem('favorites', JSON.stringify(favorites))
+            loadFavorites();
+        }
     }
 }
 
@@ -89,7 +98,8 @@ let processTitleSearch = function(title, country, type, output_language) {
 	    .then(response => {
             console.log(response);
             if (response.hasOwnProperty('result')) {
-                localStorage.setItem(title, JSON.stringify(response.result));
+                console.log(response.result[0].title)
+                localStorage.setItem(response.result[0].title, JSON.stringify(response.result));
                 loadTitleSearch(response.result);
             }
         })
@@ -264,6 +274,10 @@ let loadMovie = function(movie) {
 
     // Poster
     posterEl.html(`<img id="movie-poster" src="${movie.posterURLs[342]}" />`);
+    $("#movie-poster").on('click', function() {
+        let currentTitle = movie.title;
+        window.location.replace(`detail.html?index=${0}&title=${currentTitle}`);
+    })
 }
 
 // *** End Movie Specific Loading Section
