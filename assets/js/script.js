@@ -21,9 +21,6 @@ let searchInput = []
 let favorites = []
 
 
-
-
-
 $('#clearSearch').on('click', function(event) {
     event.preventDefault();
     localStorage.removeItem('movie-title');
