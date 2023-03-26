@@ -20,9 +20,16 @@ const options = {
 let searchInput = []
 let favorites = []
 
+
+$('#clearSearch').on('click', function(event) {
+    event.preventDefault();
+    localStorage.removeItem('movie-title');
+    $('#searchHist').empty()
+})
+
 $('#main-search-button').on('click', function() {
     var selectEl = $('#main-search-input')
-    if(selectEl.val().length > 0){
+    if(selectEl.val().length > 0 && searchInput.includes(selectEl.val()) === false){
         var title = $("#main-search-input").val();
         processTitleSearch(title, "us", "", "en");
         searchInput.push(selectEl.val())
@@ -53,9 +60,11 @@ function saveToFavorites() {
     var searchInput = JSON.parse(localStorage.getItem('movie-title'))
     if (searchInput){
         let lastItem = searchInput[searchInput.length -1]
-        favorites.push(lastItem)
-        localStorage.setItem('favorites', JSON.stringify(favorites))
-        loadFavorites();
+        if(favorites.includes(lastItem) === false){
+            favorites.push(lastItem)
+            localStorage.setItem('favorites', JSON.stringify(favorites))
+            loadFavorites();
+        }
     }
 }
 
