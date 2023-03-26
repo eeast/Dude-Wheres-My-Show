@@ -17,7 +17,7 @@ const urlParams = new URLSearchParams(queryString);
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': _APIKEY_,
+		'X-RapidAPI-Key': 'b112d385f0msh77573d5a237f6d2p144ef6jsn53788266a661',
 		'X-RapidAPI-Host': 'ny-times-movie-reviews.p.rapidapi.com'
 	}
 };
@@ -51,10 +51,23 @@ let loadReviewStorage = function(title) {
 let loadHTML = function(nytReview, strAvail) {
     console.log(nytReview);
     selected = strAvail[urlParams.get('index')];
+    console.log(selected);
 
     posterEl.attr('src', selected.posterURLs[500]);
     titleEl.text(selected.title);
-    directorEl.text(`Director: ${selected.directors[0]}`);
+    if (selected.type === "movie") {
+        directorEl.text(`Director: ${selected.directors[0]}`);
+    } else {
+        let creators = "";
+        for (let i = 0; i < selected.genres.length; i++) {
+            creators += `${selected.genres[i].name}`;
+            if (i < selected.genres.length - 1) {
+                craetors += ", ";
+            }
+        }
+        genreEl.text(`Creators: ${creators}`);
+    }
+    
     descriptionEl.text(`Description: ${selected.overview}`);
     let genre = "";
     for (let i = 0; i < selected.genres.length; i++) {
@@ -68,12 +81,16 @@ let loadHTML = function(nytReview, strAvail) {
     releaseDateEl.text(`Released: ${selected.year}`);
 
     for(let i = 0; i < 3 && i < nytReview.length; i++) {
-        let newReview = $("<div>").addClass("row");
-        newReview.append($("<h5>").text(`Review: ${nytReview[i].display_title}`));
-        newReview.append($("<p>").html(`"${nytReview[i].summary_short}"`));
-        newReview.append($("<p>").text(`-- ${nytReview[i].byline}`));
-        newReview.append($("<div>").addClass("row right-align").append($("<a>").text("Read Full Article").attr('href', nytReview[i].link.url).attr('style','text-align: right;')));
-        recentReviewsEl.append(newReview);
+        console.log(nytReview[i].display_title);
+        console.log(selected.title);
+        if (nytReview[i].display_title === selected.title) {
+            let newReview = $("<div>").addClass("row");
+            newReview.append($("<h5>").text(`Review: ${nytReview[i].display_title}`));
+            newReview.append($("<p>").html(`"${nytReview[i].summary_short}"`));
+            newReview.append($("<p>").text(`-- ${nytReview[i].byline}`));
+            newReview.append($("<div>").addClass("row right-align").append($("<a>").text("Read Full Article").attr('href', nytReview[i].link.url).attr('style','text-align: right;')));
+            recentReviewsEl.append(newReview);
+        }
     }
 };
 
@@ -86,7 +103,7 @@ let loadStrAvail = function(title) {
 
 let titleURL = urlParams.get('title');
 let strAvailResponse = loadStrAvail(titleURL);
-let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=${_APIKEY_NYT_}&query=${strAvailResponse[0].title}&order=by-opening-date`;
+let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=nKT5TYGLEvnFOj3wDHt1bjkVghf7Byyo&query=${strAvailResponse[0].title}&order=by-opening-date`;
 loadReviewStorage(strAvailResponse[0].title);
 
 

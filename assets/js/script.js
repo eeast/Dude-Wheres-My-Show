@@ -10,7 +10,7 @@ const trailerEl = $('#trailer');
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': _APIKEY_,
+		'X-RapidAPI-Key': 'b112d385f0msh77573d5a237f6d2p144ef6jsn53788266a661',
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
@@ -310,6 +310,10 @@ let loadSeries = function(series) {
 
     // Poster
     posterEl.html(`<img id="movie-poster" src="${series.posterURLs[342]}" />`);
+    $("#movie-poster").on('click', function() {
+        let currentTitle = series.title;
+        window.location.replace(`detail.html?index=${0}&title=${currentTitle}`);
+    })
 }
 
 // *** End Series Specific Loading Section ***
