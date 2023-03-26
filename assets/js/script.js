@@ -68,7 +68,8 @@ let processTitleSearch = function(title, country, type, output_language) {
 	    .then(response => {
             console.log(response);
             if (response.hasOwnProperty('result')) {
-                localStorage.setItem(title, JSON.stringify(response.result));
+                console.log(response.result[0].title)
+                localStorage.setItem(response.result[0].title, JSON.stringify(response.result));
                 loadTitleSearch(response.result);
             }
         })
@@ -243,6 +244,10 @@ let loadMovie = function(movie) {
 
     // Poster
     posterEl.html(`<img id="movie-poster" src="${movie.posterURLs[342]}" />`);
+    $("#movie-poster").on('click', function() {
+        let currentTitle = movie.title;
+        window.location.replace(`detail.html?index=${}&title=${currentTitle}`);
+    })
 }
 
 // *** End Movie Specific Loading Section

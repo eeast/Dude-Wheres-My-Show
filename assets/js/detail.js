@@ -11,10 +11,7 @@ const recentUserReviewsEl = $("#recent-user-reviews");
 
 
 const queryString = window.location.search;
-console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
-console.log(urlParams);
-console.log(urlParams.get('title'));
 
 
 const options = {
@@ -26,17 +23,14 @@ const options = {
 };
 
 
-let title = urlParams.get('title');
-let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=${_APIKEY_NYT_}&query=${title}&order=by-opening-date`;
-
-
-let fetchReviews = function() {
+let fetchReviews = function(title) {
     fetch(requestURL, options)
 	    .then(response => response.json())
 	    .then(response => {
             console.log(response);
-            if (response.status === 200) {
-                localStorage.setItem(title, JSON.stringify(response.result));
+            if (response.status === "OK") {
+                localStorage.setItem(`Review->${title}`, JSON.stringify(response.results));
+                loadHTML(response.results, loadStrAvail(title))
             }
         })
 	    .catch(err => console.error(err));
@@ -44,32 +38,35 @@ let fetchReviews = function() {
 
 
 
-let loadReviewStorage = function() {
-    let res = localStorage.getItem(title);
+let loadReviewStorage = function(title) {
+    let res = localStorage.getItem(`Review->${title}`);
     if (res === null) {
-        fetchReviews(title)
-    }
+        fetchReviews(title);
+    } else {
     loadHTML(res, loadStrAvail(title));
+    }
 };
 
 
 let loadHTML = function(nytReview, strAvail) {
-    posterEl.attr('src', strAvail.posterURL[500]);
-    titleEl.text(title);
-    directorEl.text(`Director: ${strAvail.directors[0]}`);
-    descriptionEl.text(`Description: ${strAvail.overview}`);
+    selected = strAvail[urlParams.get('index')];
+
+    posterEl.attr('src', selected.posterURLs[500]);
+    titleEl.text(selected.title);
+    directorEl.text(`Director: ${selected.directors[0]}`);
+    descriptionEl.text(`Description: ${selected.overview}`);
     let genre = "";
-    for (let i = 0; i < strAvail.genres.length; i++) {
-        genre += `${strAvail.genres[i].name}`;
-        if (i < strAvail.genres.length - 1) {
+    for (let i = 0; i < selected.genres.length; i++) {
+        genre += `${selected.genres[i].name}`;
+        if (i < selected.genres.length - 1) {
             genre += ", ";
         }
     }
     genreEl.text(`Genre: ${genre}`);
-    metascoreEl.text(`IMDB Score: ${strAvail.imdbRating} (${strAvail.imdbVoteCount} voters)`);
-    releaseDateEl.text(`Released: ${strAvail.year}`);
+    metascoreEl.text(`IMDB Score: ${selected.imdbRating} (${selected.imdbVoteCount} voters)`);
+    releaseDateEl.text(`Released: ${selected.year}`);
 
-    for(let i = 0; i < 3 || i < nytReview.length; i++) {
+    for(let i = 0; i < 3 && i < nytReview.length; i++) {
         let newReview = $("<div>").addClass("row");
         newReview.append($("<h5>").text(`Review: ${nytReview.display_title}`));
         newReview.append($("<p>").text(`${nytReview.headline}`));
@@ -92,8 +89,10 @@ let loadStrAvail = function(title) {
 
 
 
-
-loadReviewStorage();
+let titleURL = urlParams.get('title');
+let strAvailResponse = loadStrAvail(titleURL);
+let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=${_APIKEY_NYT_}&query=${strAvailResponse[0].title}&order=by-opening-date`;
+loadReviewStorage(strAvailResponse[0].title);
 
 
 // *** DEFUNCT METACRITIC API CODE ***
