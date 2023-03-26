@@ -74,6 +74,12 @@ aside {
 
 }
 
+
+.history-btn,
+.favorites-btn {
+    margin: 5px;
+}
+
 #stream-icon {
     width: 250px;
     height: 250px;
