@@ -3,7 +3,7 @@ const titleEl = $("#title");
 const descriptionEl = $("#description");
 const directorEl = $("#director");
 const genreEl = $("#genre");
-const metascoreEl = $("#metascore");
+const imdbScoreEl = $("#imdbScore");
 const userscoreEl = $("#userscore");
 const releaseDateEl = $("#release-date");
 const recentReviewsEl = $("#recent-reviews");
@@ -59,10 +59,10 @@ let loadHTML = function(nytReview, strAvail) {
         directorEl.text(`Director: ${selected.directors[0]}`);
     } else {
         let creators = "";
-        for (let i = 0; i < selected.genres.length; i++) {
-            creators += `${selected.genres[i].name}`;
-            if (i < selected.genres.length - 1) {
-                craetors += ", ";
+        for (let i = 0; i < selected.creators.length; i++) {
+            creators += `${selected.creators[i].name}`;
+            if (i < selected.creators.length - 1) {
+                creators += ", ";
             }
         }
         genreEl.text(`Creators: ${creators}`);
@@ -77,20 +77,30 @@ let loadHTML = function(nytReview, strAvail) {
         }
     }
     genreEl.text(`Genre: ${genre}`);
-    metascoreEl.text(`IMDB Score: ${selected.imdbRating} (${selected.imdbVoteCount} voters)`);
-    releaseDateEl.text(`Released: ${selected.year}`);
+    imdbScoreEl.text(`IMDB Score: ${selected.imdbRating} (${selected.imdbVoteCount} voters)`);
+    if (selected.type === "movie") {
+        releaseDateEl.text(`Released: ${selected.year}`);
+    } else {
+        releaseDateEl.text(`On Air: ${selected.firstAirYear} - ${selected.lastAirYear}`);
+    }
 
-    for(let i = 0; i < 3 && i < nytReview.length; i++) {
-        console.log(nytReview[i].display_title);
-        console.log(selected.title);
-        if (nytReview[i].display_title === selected.title) {
-            let newReview = $("<div>").addClass("row");
-            newReview.append($("<h5>").text(`Review: ${nytReview[i].display_title}`));
-            newReview.append($("<p>").html(`"${nytReview[i].summary_short}"`));
-            newReview.append($("<p>").text(`-- ${nytReview[i].byline}`));
-            newReview.append($("<div>").addClass("row right-align").append($("<a>").text("Read Full Article").attr('href', nytReview[i].link.url).attr('style','text-align: right;')));
-            recentReviewsEl.append(newReview);
+    if (nytReview) {
+        for(let i = 0; i < 3 && i < nytReview.length; i++) {
+            console.log(nytReview[i].display_title);
+            console.log(selected.title);
+            if (nytReview[i].display_title === selected.title) {
+                let newReview = $("<div>").addClass("row");
+                newReview.append($("<h5>").text(`Review: ${nytReview[i].display_title}`));
+                newReview.append($("<p>").html(`"${nytReview[i].summary_short}"`));
+                newReview.append($("<p>").text(`-- ${nytReview[i].byline}`));
+                newReview.append($("<div>").addClass("row right-align").append($("<a>").text("Read Full Article").attr('href', nytReview[i].link.url).attr('style','text-align: right;')));
+                recentReviewsEl.append(newReview);
+            }
         }
+    }
+    console.log(recentReviewsEl.size());
+    if(recentReviewsEl.children().size() === 0) {
+        recentReviewsEl.append($("<h5>").text(`😒 No Review Found from the New York Times.`));
     }
 };
 
