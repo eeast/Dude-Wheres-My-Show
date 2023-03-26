@@ -267,7 +267,7 @@ let loadMovie = function(movie) {
     posterEl.html(`<img id="movie-poster" src="${movie.posterURLs[342]}" />`);
     $("#movie-poster").on('click', function() {
         let currentTitle = movie.title;
-        window.location.replace(`detail.html?index=${}&title=${currentTitle}`);
+        window.location.replace(`detail.html?index=${0}&title=${currentTitle}`);
     })
 }
 

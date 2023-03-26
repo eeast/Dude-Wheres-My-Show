@@ -39,16 +39,17 @@ let fetchReviews = function(title) {
 
 
 let loadReviewStorage = function(title) {
-    let res = localStorage.getItem(`Review->${title}`);
+    let res = JSON.parse(localStorage.getItem(`Review->${title}`));
     if (res === null) {
         fetchReviews(title);
     } else {
-    loadHTML(res, loadStrAvail(title));
+        loadHTML(res, loadStrAvail(title));
     }
 };
 
 
 let loadHTML = function(nytReview, strAvail) {
+    console.log(nytReview);
     selected = strAvail[urlParams.get('index')];
 
     posterEl.attr('src', selected.posterURLs[500]);
@@ -68,17 +69,11 @@ let loadHTML = function(nytReview, strAvail) {
 
     for(let i = 0; i < 3 && i < nytReview.length; i++) {
         let newReview = $("<div>").addClass("row");
-        newReview.append($("<h5>").text(`Review: ${nytReview.display_title}`));
-        newReview.append($("<p>").text(`${nytReview.headline}`));
-        newReview.append($("<p>").html(nytReview.summary_short));
+        newReview.append($("<h5>").text(`Review: ${nytReview[i].display_title}`));
+        newReview.append($("<p>").html(`"${nytReview[i].summary_short}"`));
+        newReview.append($("<p>").text(`-- ${nytReview[i].byline}`));
+        newReview.append($("<div>").addClass("row right-align").append($("<a>").text("Read Full Article").attr('href', nytReview[i].link.url).attr('style','text-align: right;')));
         recentReviewsEl.append(newReview);
-    }
-    for(let i = 0; i < 3; i++) {
-        let newReview = $("<div>").addClass("row");
-        newReview.append($("<h5>").text(`Reviewer: ${res.recentUserReviews[i].name}`));
-        newReview.append($("<p>").text(`Grade: ${res.recentUserReviews[i].grade}`));
-        newReview.append($("<p>").text(`"${res.recentUserReviews[i].body}"`));
-        recentUserReviewsEl.append(newReview);
     }
 };
 
