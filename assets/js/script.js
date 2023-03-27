@@ -10,7 +10,7 @@ const trailerEl = $('#trailer');
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '290a364c41mshccb2a32f331a036p14beeejsne86f888dd1cd',
+		'X-RapidAPI-Key': '01deecf6cfmsh459b04bfafe4ea2p119498jsn337913ee3ea6',
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
