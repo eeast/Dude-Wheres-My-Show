@@ -23,8 +23,7 @@ This application is powered by HTML, CSS, JavaScript, jQuery, Materialize, Strea
 ## Installation
 
 1. Clone the repo:
-   ******** NEEDS TO BE EDITED ***********
-   git clone https://github.com/eeast/GP1-FrontEndApplication.git
+   https://github.com/eeast/Dude-Wheres-My-Show.git
 
 2. Open in VS Code. If you do not have VS code you must install it.
 
