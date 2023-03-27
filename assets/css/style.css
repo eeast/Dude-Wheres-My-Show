@@ -31,7 +31,7 @@ input {
     background-color: #118AB2;
 }
 
-.brand-logo {
+.title {
     font-family: 'adl85', sans-serif;
     font-size: 2.5rem !important;  
 }
@@ -96,4 +96,29 @@ aside {
 #stream-icon {
     width: 250px;
     height: 250px;
+}
+
+/* media queries */
+@media (max-width: 905px) {
+    .title, h1 {
+        font-size: 2rem !important;
+    }
+}
+
+@media (max-width: 758px) {
+    .about-text {
+        display: none;
+    }    
+    }
+
+@media (max-width: 720px) {
+    .title {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 635px) {
+    .title {
+        display: none;
+    }
 }
