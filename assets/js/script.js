@@ -45,7 +45,7 @@ function addSearchHistory() {
     }
     $('#searchHist').empty()
     for (i=0; i < searchInput.length; i++){
-        var button =$('<li><a class="waves-effect waves-light btn-small history-btn">' + searchInput[i] + '</a></li>')
+        var button =$('<li><a class="waves-effect waves-light btn-small history-btn" id="movie-btn">' + searchInput[i] + '</a></li>')
         button.click(function(event){
             processTitleSearch($(event.target).text(), "us", "", "en")
             searchInput.push(searchInput.splice(searchInput.indexOf($(event.target).text()),1)[0])
