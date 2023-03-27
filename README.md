@@ -10,8 +10,7 @@ Dude, where's my show should definitely be a favorite website of you and your fr
 
 ## Live URL
 
-******** NEEDS TO BE EDITED ***********
-https://eeast.github.io/GP1-FrontEndApplication/
+https://eeast.github.io/Dude-Wheres=My-Show/
 
 ## Screenshots of Deployed Application
 
