@@ -1,9 +1,9 @@
 :root {
     --red: #EF476F;
-    --yellow: #FFD166;
-    --green: #06D6A0;
-    --blue: #118AB2;
-    --navy: #073B4C;
+    --yellow:#FFD166;
+    --green:#06D6A0;
+    --blue:#118AB2;
+    --navy:#073B4C;
 }
 
 @font-face {
@@ -24,11 +24,10 @@
     font-size: 2.5rem !important;  
 }
 
-/* about */
-h1 {
-    color: var(--yellow);    
-    font-family: 'adl85', sans-serif;
-    font-size: 2.5rem;
+/* review */
+#review-container, #description {
+    margin: auto 0;
+    text-align: center;
 }
 
 body {
@@ -36,35 +35,28 @@ body {
     color: white;
 }
 
-.carousel {
-    height: 500px;
-    perspective: 200px;
+.about-nav {
+    background-color: var(--blue);
 }
 
-.carousel .carousel-item {
-    width: 375px;
-    background: var(--yellow);
-    padding: 20px;
-    height: auto;
+h1 {
+    color: var(--yellow);
+}
+
+#poster {
+    max-width: 50%;
     text-align: center;
-    border-radius: 15px;
+    min-width: 200px;
+    padding: 15px;
 }
 
-.carousel-img {
-    margin: 0 auto;
-    overflow: hidden;
+#poster-and-info {
+    display: flex;
 }
 
-img {
-    width: 50%;
-    height: auto;
-    border-radius: 50%;
-    border: 3px var(--navy) solid;
-}
-
-.carousel-text {
-    color: var(--navy);
-    font-size: 1rem;
+#description, #imbd-description-container {
+    padding: 20px; 
+    text-align: center;
 }
 
 /* media queries */
@@ -87,16 +79,7 @@ img {
 }
 
 @media (max-width: 650px) {
-    .carousel .carousel-item {
-        width: 300px; 
-    }
-    .carousel {
-        height: 425px;
-        perspective: 100px;
-    }
-
     .title {
         display: none;
     }
 }
-

@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Materialize CSS link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Dude, Where's My Show?</title>
 </head>
@@ -14,10 +17,10 @@
 <body>
     <nav class="main-nav">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">Dude, Where's My Show?</a>
+            <a href="#" class="brand-logo center"><span class="title">Dude, Where's My Show?</span></a>
             <ul id="nav-mobile" class="left">
                 <li>
-                    <a href="about.html"><i class="material-icons left"></i>About Us</a>
+                    <a href="about.html"><i class="material-icons left">group</i><span class="about-text">About</span></a>
                 </li>
             </ul>
         </div>
@@ -25,11 +28,11 @@
     <div class="searchregion">
         <!-- Search button + modal(below) - centered on bar, large button -->
         <input id="main-search-input" type="text" placeholder="Enter search here" class="text-white"></input>
-        <button class="btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" id="main-search-button" type="submit"
+        <button class="btn-large btn accent-2 waves-effect waves-light hoverable" id="main-search-button" type="submit"
             value="submit">Search</button>
 
         <!-- Adv Search Modal Trigger -->
-        <a class="modal-trigger btn-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable"
+        <a class="modal-trigger btn-large btn #FFD166 accent-2 waves-effect waves-light hoverable" id="adv-search-btn"
             href="#modal1">Advanced Search</a>
 
         <!-- Adv Search Modal Structure -->
@@ -79,7 +82,7 @@
 
         <!-- YouTube Modal Trigger -->
    
-        <a class="waves-effect waves-light btn btn-large amber accent-2 modal-trigger" href="#modal2">Youtube Trailer</a>
+        <a id = "youtube-btn" class="waves-effect waves-light btn btn-large accent-2 modal-trigger" href="#modal2">Youtube Trailer</a>
 
         <!-- YouTube Modal Structure -->
         <div id="modal2" class="modal valign-wrapper" style="background-color: black;">
@@ -106,30 +109,29 @@
 
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
-        <div class="row">
-            <div class="col s8">
+        <div class="row" id="movie-container">
+            <div class="col s12 m12 l8 flow-text">
                 <section class="row">
                             <!-- movie poster -->
-                            <div class="col s4" id="movie-poster">
+                            <div class="col s12 m4 l4" id="movie-poster">
                             </div>
 
                             <!-- movie info (title, year, runtime, services) -->
-                            <div class="col s8" id="movie-info">
+                            <div class="col s12 m8 l8" id="movie-info">
                                 <h3 id="movie-title"></h3>
                                 <p id="year"></p>
-                                <p id="runtime"></p>
+                                <p id="runtime"></p> 
+                                <!-- favorites btn -->
+                                <button class="sml-large btn #FFD166 accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
                                 <h4>Streaming Services:</h4>
                                 <div id="services">
                                     
                                 </div>
                             </div>
-
-                            <!-- add trailer -->
-                            <button class="sml-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
                 </section>
             </div>
 
-            <div id="aside" class="col s4">
+            <div id="aside" class="col s12 m12 l4">
                 <!-- Favorites and Search History - stretch 20% -->
                 <aside>
                     <h6 style="color: #FFD166; text-decoration: underline;">Favorites</h6>

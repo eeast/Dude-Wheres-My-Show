@@ -15,7 +15,6 @@ const options = {
 	}
 };
 
-
 // *** Begin Title Search Section ***
 let searchInput = []
 let favorites = []

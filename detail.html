@@ -10,72 +10,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <!--materialize.css-->
     <link type="text/css" rel="stylesheet" href="./materialize/css/materialize.css"  media="screen,projection"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/detail.css">
     <title>Details</title>
 </head>
 <body>
-    <!-- NOTES: 
-        -js and style tags included to minimize conflict, can be moved to respective sheets after merge
-        -need to consider responsiveness, do we want to maintain carousel on mobile or use cards?
-        -do we want to use icons? if so, should we stick with one icon library?
-        -need image folder, each team member can insert own image for carousel
-        -what information about our project/process do we want to highlight in the description?
-        -how do we want navbar to look/function? -->
-        
-    <!-- mockup css styles -->
-    <style>
-        /* group color palette */
-        :root {
-            --red: #EF476F;
-            --yellow:#FFD166;
-            --green:#06D6A0;
-            --blue:#118AB2;
-            --navy:#073B4C;
-        }
-
-        body {
-            background-color: var(--red);
-            color: white;
-        }
-
-        .about-nav {
-            background-color: var(--blue);
-        }
-
-        h1 {
-            color: var(--yellow);
-        }
-        
-    </style>
-    
     <!-- nav with link to go home -->
     <nav class="about-nav">
         <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">DUDE</a>
+            <a class="brand-logo center"><span class="title">Dude, Where's My Show?</span></a>
             <ul id="nav-mobile" class="left">
                 <li>
-                    <a href="./index.html"><i class="material-icons left">home</i>Home</a>
+                    <a href="./index.html"><i class="material-icons left">home</i><span class="home-text">Home</span></a>
                 </li>
             </ul>
+        </div>
     </nav>
 
     <!-- Movie details section -->
-    <main class="container" style="background-color: var(--navy);">
-        <div class="row valign-wrapper" style="padding-top: 10px;">
-            <img id="poster" alt="Title Poster" class="col s4">
-            <div class="col s8">
-                <h1 id="title"></h1>
-                <p id="director"></p>
-                <p id="genre"></p>
-                <p id="release-date"></p>
+    <main class="container">
+
+        <div id="poster-and-info">
+            <img id="poster" alt="Title Poster">
+    
+            <div class="row valign-wrapper">
+                <div class="flow-text valign center">
+                    <h1 id="title"></h1>
+                    <p id="director"></p>
+                    <p id="genre"></p>
+                    <p id="release-date"></p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <p id="description" class="col s10 offset-s1"></p>
+
+        <div id="imbd-description-container">
+            <div class="row flow-text">
+                <p id="description" class="col s12 m12 l12"></p>
+            </div>
+
+            <div class="container flow-text">
+                <h4 id="imdbScore"></h4>
+                <div id="recent-reviews"></div>
+            </div> 
         </div>
-        <div class="container">
-            <h4 id="imdbScore"></h4>
-            <div id="recent-reviews"></div>
-        </div>
+        
     </main>
 
     <!--jQuery -->
