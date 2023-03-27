@@ -10,7 +10,7 @@ const trailerEl = $('#trailer');
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'b112d385f0msh77573d5a237f6d2p144ef6jsn53788266a661',
+		'X-RapidAPI-Key': '290a364c41mshccb2a32f331a036p14beeejsne86f888dd1cd',
 		'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com'
 	}
 };
@@ -194,7 +194,7 @@ let loadMovieStreaming = function(strServices) {
 
         if (output.includes('prime')) {
             console.log("this movie has prime");
-            servicesEl.append('<a href="https://www.amazon.com/Prime-Video/"><img src= "./streaming-service-icons/Amazon-Prime-Video.jpg" alt="Amazon Prime Video" style="width:100px; height:100px; margin:3px"></a>')
+            servicesEl.append('<a href="https://www.primevideo.com/"><img src= "./streaming-service-icons/Amazon-Prime-Video.jpg" alt="Amazon Prime Video" style="width:100px; height:100px; margin:3px"></a>')
         }
         else if (output.includes('hulu')) {
             console.log("this movie has hulu");
@@ -356,5 +356,3 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".modal").modal();
 });
-
-// Maybe we can add the advanced search history to append advanced searched movies to the aside as well, and can be added to favorites
