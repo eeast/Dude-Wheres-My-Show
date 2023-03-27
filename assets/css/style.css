@@ -162,9 +162,7 @@ aside {
         padding: 0; 
     }
 
-    #main-search-input, #main-search-button, #adv-search-btn, #youtube-btn, #addFavorite {
+    #main-search-input, #main-search-button, #adv-search-btn, #youtube-btn, #addFavorite, #clearSearch {
         width: 100%;
     }
-
-
 }
