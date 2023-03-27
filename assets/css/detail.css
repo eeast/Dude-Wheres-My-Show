@@ -43,15 +43,22 @@ h1 {
     color: var(--yellow);
 }
 
+/* #poster-box {
+    display: flex;
+} */
+
 #poster {
-    max-width: 50%;
+    width: 25%;
+    min-width: 180px;
+    height: auto;
+    object-fit: cover;
     text-align: center;
-    min-width: 200px;
     padding: 15px;
 }
 
 #poster-and-info {
     display: flex;
+    margin: 15px;
 }
 
 #description, #imbd-description-container {

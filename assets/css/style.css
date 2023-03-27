@@ -123,6 +123,22 @@ aside {
     margin: 5px;
 }
 
+#clearSearch {
+    color: white;
+    background: var(--red);
+    font-weight: bold;
+}
+
+#movie-btn, .favorites-btn {
+    color: var(--navy);
+    background: var(--green);
+    font-weight: bold;
+}
+
+.aside-title {
+    color: #FFD166;
+    font-weight: bold;
+}
 /* media queries */
 @media (max-width: 925px) {
     .title, h1 {
@@ -156,10 +172,9 @@ aside {
 
 @media (max-width: 600px) {
     .searchregion{
-        width: 100vw;
+        width: 90%;
         display: block;
-        margin: 0; 
-        padding: 0; 
+        margin: 0 auto; 
     }
 
     #main-search-input, #main-search-button, #adv-search-btn, #youtube-btn, #addFavorite, #clearSearch {

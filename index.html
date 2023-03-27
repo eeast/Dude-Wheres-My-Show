@@ -113,8 +113,11 @@
             <div class="col s12 m12 l8 flow-text">
                 <section class="row">
                             <!-- movie poster -->
-                            <div class="col s12 m4 l4" id="movie-poster">
+                            <div id="poster-box">
+                                <div class="col s12 m4 l4" id="movie-poster">
                             </div>
+                            </div>
+                            
 
                             <!-- movie info (title, year, runtime, services) -->
                             <div class="col s12 m8 l8" id="movie-info">
@@ -134,12 +137,12 @@
             <div id="aside" class="col s12 m12 l4">
                 <!-- Favorites and Search History - stretch 20% -->
                 <aside>
-                    <h6 style="color: #FFD166; text-decoration: underline;">Favorites</h6>
+                    <h6 Favorites class="aside-title">Favorites</h6>
                     <ul id ="favorites" style="list-style: none;" title="Favorites"></ul>
 
-                    <h6 style="color: #FFD166; text-decoration: underline;">Search History</h6>
+                    <h6 class="aside-title" >Search History</h6>
                     <ul id ="searchHist" style="list-style: none;"  title="searchHist"></ul>
-                    <div><a class="pink accent-3 btn-small history-btn" id="clearSearch">Clear Search</a></div>
+                    <div><a class="btn-small history-btn" id="clearSearch">Clear Search</a></div>
                 </aside>
             </div>
         </div>
