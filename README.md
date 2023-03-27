@@ -10,7 +10,7 @@ Dude, where's my show should definitely be a favorite website of you and your fr
 
 ## Live URL
 
-https://eeast.github.io/Dude-Wheres=My-Show/
+https://eeast.github.io/Dude-Wheres-My-Show/
 
 ## Screenshots of Deployed Application
 
