@@ -23,10 +23,7 @@ body {
     color: #FFD166;
 }
 
-input {
-    color: #118AB2;
-}
-
+/* nav */
 .main-nav {
     background-color: #118AB2;
 }
@@ -36,30 +33,9 @@ input {
     font-size: 2.5rem !important;  
 }
 
-p {
-    color: white;
-}
-
-aside,
-input {
-    color: #118AB2;
-}
-
-.p {
-    color: #118AB2;
-}
-
-
-#movie-poster {
-max-width: 50%;
-}
-
+/* search field and buttons */
 .searchregion {
-    
-}
-
-.modal-input-text {
-    color: #118AB2;
+        
 }
 
 #advanced-label-1, 
@@ -68,7 +44,31 @@ max-width: 50%;
     color: #118AB2;
 }
 
-.advanced-text-color {
+input, .modal-input-text, .advanced-text-color {
+    color: #118AB2;
+}
+
+/* movie display area */
+#stream-icon {
+    width: 250px;
+    height: 250px;
+}
+
+p {
+    color: white;
+}
+
+#movie-poster {
+    max-width: 50%;
+}
+    
+/* aside */
+aside,
+input {
+    color: #118AB2;
+}
+
+.p {
     color: #118AB2;
 }
 
@@ -87,15 +87,9 @@ aside {
 
 }
 
-
 .history-btn,
 .favorites-btn {
     margin: 5px;
-}
-
-#stream-icon {
-    width: 250px;
-    height: 250px;
 }
 
 /* media queries */
