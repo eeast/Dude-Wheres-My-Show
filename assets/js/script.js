@@ -15,7 +15,7 @@ const options = {
 	}
 };
 
-// *** Begin Title Search Section ***
+// *** Begin Aside/Favorites ***
 let searchInput = []
 let favorites = []
 
@@ -24,6 +24,7 @@ $('#clearSearch').on('click', function(event) {
     event.preventDefault();
     localStorage.removeItem('movie-title');
     $('#searchHist').empty()
+    searchInput = []
 })
 
 $('#main-search-button').on('click', function() {
@@ -88,7 +89,9 @@ function loadFavorites(){
 $('#addFavorite').on('click', function() { 
     saveToFavorites();
 })
+// *** End Aside/Favorites Section ***
 
+// *** Begin Title Search Section ***
 let processTitleSearch = function(title, country, type, output_language) {
     console.log(title, country, type, output_language);
     results = JSON.parse(localStorage.getItem(title));
