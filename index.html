@@ -109,8 +109,8 @@
 
     <!-- Welcome and description/Search results - stretch 80% -->
     <main>
-        <div class="row">
-            <div class="col s12 m8 l8">
+        <div class="row" id="movie-container">
+            <div class="col s12 m12 l8 flow-text">
                 <section class="row">
                             <!-- movie poster -->
                             <div class="col s12 m4 l4" id="movie-poster">
@@ -120,19 +120,18 @@
                             <div class="col s12 m8 l8" id="movie-info">
                                 <h3 id="movie-title"></h3>
                                 <p id="year"></p>
-                                <p id="runtime"></p>
+                                <p id="runtime"></p> 
+                                <!-- favorites btn -->
+                                <button class="sml-large btn #FFD166 accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
                                 <h4>Streaming Services:</h4>
                                 <div id="services">
                                     
                                 </div>
                             </div>
-
-                            <!-- add trailer -->
-                            <button class="sml-large btn #ffd740 amber accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
                 </section>
             </div>
 
-            <div id="aside" class="col s12 m4 l4">
+            <div id="aside" class="col s12 m12 l4">
                 <!-- Favorites and Search History - stretch 20% -->
                 <aside>
                     <h6 style="color: #FFD166; text-decoration: underline;">Favorites</h6>

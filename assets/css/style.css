@@ -1,9 +1,9 @@
 :root {
-    --red: var(#EF476F);
-    --yellow: var(#FFD166);
-    --green: var(#06D6A0);
-    --blue: var(#118AB2);
-    --navy: var(#073B4C);
+    --red: #EF476F;
+    --yellow: #FFD166;
+    --green: #06D6A0;
+    --blue: #118AB2;
+    --navy: #073B4C;
 }
 
 @font-face {
@@ -19,13 +19,13 @@
 }
 
 body {
-    background-color: #073B4C;
+    background-color: var(--navy);
     color: #FFD166;
 }
 
 /* nav */
 .main-nav {
-    background-color: #118AB2;
+    background-color: var(--blue);
 }
 
 .title {
@@ -36,6 +36,12 @@ body {
 /* search field and buttons */
 .searchregion {
     display: flex;
+    margin: 20px
+}
+
+input {
+    color: white;
+    font-size: 1.5rem !important;
 }
 
 #main-search-input {
@@ -43,23 +49,28 @@ body {
     margin: 2px;
 }
 
-#main-search-button, #adv-search-btn, #youtube-btn {
+#main-search-button, #adv-search-btn, #youtube-btn, #addFavorite  {
     margin: 2px;
-    width: 12rem;
+    padding:0 5px 0 5px;
+    width: 14rem;
     text-align: center;
     font-weight: bold;
-    color: #073B4C;
-    background:#FFD166;
+    color: var(--navy);
+    background: var(--yellow);
+}
+
+#addFavorite {
+    background:var(--green); 
 }
 
 #advanced-label-1, 
 #advanced-label-2, 
 #advanced-label-3 {
-    color: #118AB2;
+    color: var(--blue);
 }
 
-input, .modal-input-text, .advanced-text-color {
-    color: #118AB2;
+.modal-input-text, .advanced-text-color {
+    color: var(--blue);
 }
 
 /* movie display area */
@@ -73,32 +84,38 @@ p {
 }
 
 #movie-poster {
-    max-width: 50%;
-}
-    
-/* aside */
-aside,
-input {
-    color: #118AB2;
+    object-fit: cover;
+    max-width: 100%;
+    text-align: center;
+    min-width: 200px;
+    padding: 15px;
 }
 
-.p {
-    color: #118AB2;
+#movie-container {
+    padding: 20px;
+}
+
+#movie-title {
+    font-weight: bold;
+}
+
+
+    
+/* aside */
+aside, .p {
+    color: var(--blue);
 }
 
 aside {
     height: 100%;
-    width: 100%;
-    padding-left: 15px;
-    margin-left: 15px;
-    padding-right: 15px;
-    margin-right: 15px;
+    width: 98%;
+    margin: 0 auto;
     float: right;
     font-style: bold;
     border: solid;
     display: inline;
     text-align: center;
-
+    padding: 15px;
 }
 
 .history-btn,
@@ -107,7 +124,7 @@ aside {
 }
 
 /* media queries */
-@media (max-width: 905px) {
+@media (max-width: 925px) {
     .title, h1 {
         font-size: 2rem !important;
     }
@@ -119,14 +136,35 @@ aside {
     }    
     }
 
-@media (max-width: 720px) {
+@media (max-width: 740px) {
     .title {
         font-size: 1.75rem !important;
     }
 }
 
-@media (max-width: 635px) {
+@media (max-width: 650px) {
     .title {
         display: none;
     }
+}
+
+@media (max-width: 617px) {
+    aside {
+        margin-right: 5.25px;
+    }
+}
+
+@media (max-width: 600px) {
+    .searchregion{
+        width: 100vw;
+        display: block;
+        margin: 0; 
+        padding: 0; 
+    }
+
+    #main-search-input, #main-search-button, #adv-search-btn, #youtube-btn, #addFavorite {
+        width: 100%;
+    }
+
+
 }
