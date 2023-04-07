@@ -69,8 +69,8 @@ input {
     color: var(--blue);
 }
 
-.modal-input-text, .advanced-text-color {
-    color: var(--blue);
+.modal-input-text, .advanced-text-color, input {
+    color: var(--blue) !important;
 }
 
 /* movie display area */
