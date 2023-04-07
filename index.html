@@ -122,35 +122,10 @@
                 <div class="input-field col s12">
                     <select id="language-dropdown">
                         <option value="" disabled selected>Choose language</option>
-                        <option value="ar">Arabic</option>
-                        <option value="zh">Chinese</option>
-                        <option value="cs">Czech</option>
-                        <option value="da">Danish</option>
-                        <option value="nl">Dutch</option>
                         <option value="en">English</option>
-                        <option value="fi">Finnish</option>
                         <option value="fr">French</option>
-                        <option value="de">German</option>
-                        <option value="el">Greek</option>
-                        <option value="he">Hebrew</option>
-                        <option value="hi">Hindi</option>
-                        <option value="hu">Hungarian</option>
-                        <option value="is">Icelandic</option>
-                        <option value="id">Indonesian</option>
-                        <option value="it">Italian</option>
-                        <option value="ja">Japanese</option>
-                        <option value="ko">Korean</option>
-                        <option value="no">Norwegian</option>
-                        <option value="pl">Polish</option>
-                        <option value="pt">Portuguese</option>
-                        <option value="ro">Romanian</option>
-                        <option value="ru">Russian</option>
                         <option value="es">Spanish</option>
-                        <option value="sw">Swahili</option>
-                        <option value="sv">Swedish</option>
-                        <option value="th">Thai</option>
                         <option value="tr">Turkish</option>
-                        <option value="vi">Vietnamese</option>
                     </select>
                     <label id="advanced-label-3">Language</label>
                 </div>
@@ -159,30 +134,6 @@
                 <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Close</a>
                 <a id="modal1-search-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">Search</a>
             </div>
-        </div>
-
-        <!-- YouTube Modal Trigger -->
-   
-        <a id = "youtube-btn" class="waves-effect waves-light btn btn-large accent-2 modal-trigger" href="#modal2">Youtube Trailer</a>
-
-        <!-- YouTube Modal Structure -->
-        <div id="modal2" class="modal valign-wrapper" style="background-color: black;">
-            <!-- Potential close window for youtube trailer -->
-            <!-- <div class="modal-fixed-footer">
-                <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">X</a>
-            </div> -->
-            <iframe
-                id="YT-iframe"
-                class="center-align"
-                width="100%"
-                height="600"
-                src=""
-                title="YouTube trailer"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-            ></iframe>
-            
         </div>
     </div>
 
@@ -207,6 +158,27 @@
                                 <p id="runtime"></p> 
                                 <!-- favorites btn -->
                                 <button class="sml-large btn #FFD166 accent-2 waves-effect waves-light hoverable" type="button" id="addFavorite">Add To Favorites</button>
+                                <!-- YouTube Modal Trigger -->
+                                <a id = "youtube-btn" class="sml-large btn #FFD166 accent-2 waves-effect waves-light hoverable modal-trigger" href="#modal2">Youtube Trailer</a>
+
+                                <!-- YouTube Modal Structure -->
+                                <div id="modal2" class="modal valign-wrapper" style="background-color: black;">
+                                    <!-- Potential close window for youtube trailer -->
+                                    <!-- <div class="modal-fixed-footer">
+                                        <a id="modal1-close-button" href="#modal1" class="modal-close waves-effect waves-green btn-flat">X</a>
+                                    </div> -->
+                                    <iframe
+                                        id="YT-iframe"
+                                        class="center-align"
+                                        width="100%"
+                                        height="600"
+                                        src=""
+                                        title="YouTube trailer"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowfullscreen
+                                    ></iframe>
+                                </div>
                                 <h4>Streaming Services:</h4>
                                 <div id="services">
                                     
@@ -238,7 +210,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- <script src="./assets/js/config.js"></script> -->
+    <script src="./assets/js/config.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 

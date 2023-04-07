@@ -17,7 +17,7 @@ const urlParams = new URLSearchParams(queryString);
 const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '01deecf6cfmsh459b04bfafe4ea2p119498jsn337913ee3ea6',
+		'X-RapidAPI-Key': 'b112d385f0msh77573d5a237f6d2p144ef6jsn53788266a661',
 		'X-RapidAPI-Host': 'ny-times-movie-reviews.p.rapidapi.com'
 	}
 };
@@ -113,7 +113,7 @@ let loadStrAvail = function(title) {
 
 let titleURL = urlParams.get('title');
 let strAvailResponse = loadStrAvail(titleURL);
-let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=slI8i6532JxFn1hICjkNmQ1Qvq8arvJ7&query=${strAvailResponse[0].title}&order=by-opening-date`;
+let requestURL = `https://ny-times-movie-reviews.p.rapidapi.com/reviews/search.json?api-key=nKT5TYGLEvnFOj3wDHt1bjkVghf7Byyo&query=${strAvailResponse[0].title}&order=by-opening-date`;
 loadReviewStorage(strAvailResponse[0].title);
 
 

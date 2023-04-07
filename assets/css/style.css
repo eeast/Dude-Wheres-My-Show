@@ -49,7 +49,7 @@ input {
     margin: 2px;
 }
 
-#main-search-button, #adv-search-btn, #youtube-btn, #addFavorite  {
+#main-search-button, #adv-search-btn, #addFavorite, #youtube-btn  {
     margin: 2px;
     padding:0 5px 0 5px;
     width: 14rem;
@@ -59,7 +59,7 @@ input {
     background: var(--yellow);
 }
 
-#addFavorite {
+#addFavorite, #youtube-btn {
     background:var(--green); 
 }
 
